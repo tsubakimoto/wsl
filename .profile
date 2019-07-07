@@ -41,3 +41,9 @@ fi
 # docker
 export DOCKER_HOST=tcp://localhost:2375
 alias docker="DOCKER_HOST=${DOCKER_HOST} docker"
+
+# phpenv
+if [ -d "${PHPENV_ROOT}" ]; then
+  export PATH="${PHPENV_ROOT}/bin:${PATH}"
+  eval "$(phpenv init -)"
+fi
