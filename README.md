@@ -9,15 +9,6 @@ sudo sed -i -e 's%http://.*.ubuntu.com%http://ftp.jaist.ac.jp/pub/Linux%g' /etc/
 sudo apt update -y
 sudo apt upgrade -y
 sudo timedatectl set-timezone 'Asia/Tokyo'
-sudo cp -r ~/ /mnt/c/wsl_home
-sudo vim /etc/passwd
-```
-
-## /etc/passwd
-```
-yuta:x:1000:1000:,,,:/home/yuta:/bin/bash
-↓
-yuta:x:1000:1000:,,,:/mnt/c/wsl_home:/bin/bash
 ```
 
 # インストール
