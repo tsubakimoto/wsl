@@ -104,8 +104,36 @@ sudo apt-get install -y \
 
 apt-cache madison docker-ce
 
+echo '' >> ~/.profile
 echo '# docker' >> ~/.profile
 echo 'export DOCKER_HOST=tcp://localhost:2375' >> ~/.profile
 echo 'alias docker="DOCKER_HOST=${DOCKER_HOST} docker"' >> ~/.profile
 source ~/.profile
 ```
+
+## phpenv
+https://github.com/phpenv/phpenv-installer
+
+```sh
+curl -L https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer | bash
+export PHPENV_ROOT="$HOME/.phpenv"
+echo '' >> ~/.profile
+echo '# phpenv' >> ~/.profile
+echo -e 'if [ -d "${PHPENV_ROOT}" ]; then\n  export PATH="${PHPENV_ROOT}/bin:${PATH}"\n  eval "$(phpenv init -)"\nfi' >> ~/.profile
+source ~/.profile
+sudo apt-get update
+sudo apt -y install build-essential
+sudo apt -y install \
+  libxml2-dev \
+  libssl-dev \
+  libbz2-dev \
+  libcurl4-openssl-dev \
+  libjpeg-dev \
+  libpng-dev \
+  libmcrypt-dev \
+  libreadline-dev \
+  libtidy-dev \
+  libxslt-dev \
+  autoconf
+```
+
