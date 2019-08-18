@@ -11,6 +11,11 @@ sudo apt upgrade -y
 sudo timedatectl set-timezone 'Asia/Tokyo'
 ```
 
+# シンボリックリンク
+```sh
+ln -s /mnt/d/src/ ~/src
+```
+
 # インストール
 ```sh
 sudo apt-get install git  
