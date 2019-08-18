@@ -128,3 +128,12 @@ sudo apt -y install \
   autoconf
 ```
 
+## azure functions
+https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux
+
+```sh
+wget -q https://packages.microsoft.com/config/ubuntu/18.10/packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo apt-get update
+sudo apt-get install -y azure-functions-core-tools
+```
