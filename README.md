@@ -18,7 +18,7 @@ ln -s /mnt/d/src/ ~/src
 
 # インストール
 ```sh
-sudo apt-get install git  
+sudo apt-get install -y git
 ```
 
 ## nvm
