@@ -39,6 +39,15 @@ echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This
 source ~/.profile
 ```
 
+## yarn
+https://yarnpkg.com/en/docs/install#debian-stable
+
+```sh
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update && sudo apt install yarn -y
+```
+
 ## pyenv
 https://github.com/pyenv/pyenv#installation
 
