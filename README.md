@@ -14,6 +14,7 @@ sudo timedatectl set-timezone 'Asia/Tokyo'
 # シンボリックリンク
 ```sh
 ln -s /mnt/d/src/ ~/src
+ln -s "/mnt/c/Users/yuta/OneDrive - 株式会社オルターブース/document/business/.ssh" ~/.ssh
 ```
 
 # インストール
