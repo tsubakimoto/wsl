@@ -15,9 +15,9 @@ sudo timedatectl set-timezone 'Asia/Tokyo'
 ```sh
 cd ~
 ln -sf /mnt/d/src/ ~/src
-ln -sf /mnt/c/Users/yuta/dotfiles/wsl/bash_aliases ~/.bash_aliases
-ln -sf /mnt/c/Users/yuta/dotfiles/wsl/bashrc ~/.bashrc
-ln -sf /mnt/c/Users/yuta/dotfiles/wsl/profile ~/.profile
+ln -sf /mnt/c/Users/yuta/dotfiles/wsl/.bash_aliases ~/.bash_aliases
+ln -sf /mnt/c/Users/yuta/dotfiles/wsl/.bashrc ~/.bashrc
+ln -sf /mnt/c/Users/yuta/dotfiles/wsl/.profile ~/.profile
 ```
 
 # インストール
