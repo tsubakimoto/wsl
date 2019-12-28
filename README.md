@@ -13,17 +13,11 @@ sudo timedatectl set-timezone 'Asia/Tokyo'
 
 # シンボリックリンク
 ```sh
-ln -s /mnt/d/src/ ~/src
-# ln -s "/mnt/c/Users/yuta/OneDrive - 株式会社オルターブース/document/business/.ssh" ~/.ssh
-```
-
-# dotfiles
-```sh
 cd ~
-git clone git@github.com:tsubakimoto/dotfiles.git
-mklink ~/dotfiles/wsl/bash_aliases ~/.bash_aliases
-mklink ~/dotfiles/wsl/bashrc ~/.bashrc
-mklink ~/dotfiles/wsl/profile ~/.profile
+ln -sf /mnt/d/src/ ~/src
+ln -sf /mnt/c/Users/yuta/dotfiles/wsl/bash_aliases ~/.bash_aliases
+ln -sf /mnt/c/Users/yuta/dotfiles/wsl/bashrc ~/.bashrc
+ln -sf /mnt/c/Users/yuta/dotfiles/wsl/profile ~/.profile
 ```
 
 # インストール
