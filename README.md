@@ -17,6 +17,15 @@ ln -s /mnt/d/src/ ~/src
 ln -s "/mnt/c/Users/yuta/OneDrive - 株式会社オルターブース/document/business/.ssh" ~/.ssh
 ```
 
+# dotfiles
+```sh
+cd ~
+git clone git@github.com:tsubakimoto/dotfiles.git
+mklink ~/dotfiles/wsl/bash_aliases ~/.bash_aliases
+mklink ~/dotfiles/wsl/bashrc ~/.bashrc
+mklink ~/dotfiles/wsl/profile ~/.profile
+```
+
 # インストール
 ```sh
 sudo apt-get install -y git
