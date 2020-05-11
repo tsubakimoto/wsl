@@ -122,9 +122,9 @@ https://github.com/phpenv/phpenv-installer
 
 ```sh
 curl -L https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer | bash
-export PHPENV_ROOT="$HOME/.phpenv"
 echo '' >> ~/.profile
 echo '# phpenv' >> ~/.profile
+echo 'export PHPENV_ROOT="$HOME/.phpenv"'
 echo -e 'if [ -d "${PHPENV_ROOT}" ]; then\n  export PATH="${PHPENV_ROOT}/bin:${PATH}"\n  eval "$(phpenv init -)"\nfi' >> ~/.profile
 source ~/.profile
 sudo apt-get update
