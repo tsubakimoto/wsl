@@ -140,6 +140,7 @@ sudo apt -y install \
   libreadline-dev \
   libtidy-dev \
   libxslt-dev \
+  libzip-dev \
   autoconf
 ```
 
