@@ -26,12 +26,12 @@ cd ~
 ln -sf /mnt/d/src/ ~/src
 ```
 
-# インストール
+# Git
 ```sh
 sudo apt-get install -y git
 ```
 
-## nvm
+# nvm
 https://github.com/nvm-sh/nvm#git-install
 
 ```sh
@@ -49,7 +49,7 @@ echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This
 source ~/.profile
 ```
 
-## yarn
+# yarn
 https://yarnpkg.com/en/docs/install#debian-stable
 
 ```sh
@@ -58,7 +58,7 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt update && sudo apt install yarn -y
 ```
 
-## pyenv
+# pyenv
 https://github.com/pyenv/pyenv#installation
 
 ```sh
@@ -72,7 +72,7 @@ echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nf
 source ~/.profile
 ```
 
-## dotnet
+# dotnet
 https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-3.0.100-preview6-linux-x64-binaries
 
 ```sh
@@ -83,7 +83,7 @@ export DOTNET_ROOT=$HOME/dotnet
 export PATH=$PATH:$HOME/dotnet
 ```
 
-## az
+# az
 https://docs.microsoft.com/ja-jp/cli/azure/install-azure-cli-apt?view=azure-cli-latest
 
 ```sh
@@ -91,7 +91,7 @@ cd ~/
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ```
 
-## docker
+# docker (WSL1)
 https://docs.docker.com/install/linux/docker-ce/ubuntu/
 
 ```sh
@@ -126,7 +126,10 @@ echo 'alias docker="DOCKER_HOST=${DOCKER_HOST} docker"' >> ~/.profile
 source ~/.profile
 ```
 
-## phpenv
+# docker (WSL2)
+https://www.docker.com/products/docker-desktop
+
+# phpenv
 https://github.com/phpenv/phpenv-installer
 
 ```sh
@@ -153,7 +156,7 @@ sudo apt -y install \
   autoconf
 ```
 
-## composer
+# composer
 ```sh
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
@@ -161,7 +164,7 @@ php composer-setup.php
 php -r "unlink('composer-setup.php');"
 ```
 
-## azure functions
+# azure functions
 https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux
 
 ```sh
