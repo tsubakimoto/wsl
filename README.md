@@ -26,6 +26,17 @@ cd ~
 ln -sf /mnt/d/src/ ~/src
 ```
 
+# openssl (自己証明書)
+```
+sudo apt install openssl
+cd ~/
+mkdir certs
+cd certs
+openssl genrsa -out http-server-localhost.key 2048
+openssl req -new -key http-server-localhost.key -subj "/CN=ymat" -out http-server-localhost.csr
+openssl x509 -req -in http-server-localhost.csr -signkey http-server-localhost.key -CAcreateserial -out http-server-localhost.crt -days 1000
+```
+
 # Git
 ```sh
 sudo apt-get install -y git
