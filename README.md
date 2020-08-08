@@ -84,14 +84,15 @@ source ~/.profile
 ```
 
 # dotnet
-https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-3.0.100-preview6-linux-x64-binaries
+https://docs.microsoft.com/ja-jp/dotnet/core/install/linux-ubuntu
 
 ```sh
-cd ~/
-curl -O https://download.visualstudio.microsoft.com/download/pr/886b4a4c-30af-454b-8bec-81c72b7b4e1f/d1a0c8de9abb36d8535363ede4a15de6/dotnet-sdk-3.0.100-linux-x64.tar.gz
-mkdir -p $HOME/dotnet && tar zxf dotnet-sdk-3.0.100-linux-x64.tar.gz -C $HOME/dotnet
-export DOTNET_ROOT=$HOME/dotnet
-export PATH=$PATH:$HOME/dotnet
+wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo apt-get update; \
+  sudo apt-get install -y apt-transport-https && \
+  sudo apt-get update && \
+  sudo apt-get install -y dotnet-sdk-3.1
 ```
 
 # az
