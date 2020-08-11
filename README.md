@@ -185,3 +185,8 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 sudo apt-get install -y azure-functions-core-tools
 ```
+
+# certbot
+```sh
+sudo apt install certbot
+```
