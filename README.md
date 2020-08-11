@@ -188,5 +188,8 @@ sudo apt-get install -y azure-functions-core-tools
 
 # certbot
 ```sh
-sudo apt install certbot
+sudo apt install software-properties-common
+sudo add-apt-repository universe
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt update
 ```
