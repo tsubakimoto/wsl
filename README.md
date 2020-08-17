@@ -83,6 +83,9 @@ echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nf
 source ~/.profile
 ```
 
+※ `pyenv install` でエラーがでたら下記を参考にする  
+https://github.com/pyenv/pyenv/wiki/Common-build-problems#prerequisites
+
 # dotnet
 https://docs.microsoft.com/ja-jp/dotnet/core/install/linux-ubuntu
 
