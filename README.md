@@ -1,9 +1,10 @@
-# WSLのインストール
+# インストール
+## WSL
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 ```
 
-# WSL2のインストール
+## WSL2
 https://docs.microsoft.com/ja-jp/windows/wsl/install-win10
 
 ```powershell
@@ -12,7 +13,8 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 wsl --set-default-version 2
 ```
 
-# 初期構築
+# セットアップ
+## 初期構築
 ```sh
 sudo sed -i -e 's%http://.*.ubuntu.com%http://ftp.jaist.ac.jp/pub/Linux%g' /etc/apt/sources.list
 sudo apt update -y
@@ -20,29 +22,19 @@ sudo apt upgrade -y
 sudo timedatectl set-timezone 'Asia/Tokyo'
 ```
 
-# シンボリックリンク
+## シンボリックリンク
 ```sh
 cd ~
 ln -sf /mnt/d/src/ ~/src
 ```
 
-# openssl (自己証明書)
-```
-sudo apt install openssl
-cd ~/
-mkdir certs
-cd certs
-openssl genrsa -out http-server-localhost.key 2048
-openssl req -new -key http-server-localhost.key -subj "/CN=ymat" -out http-server-localhost.csr
-openssl x509 -req -in http-server-localhost.csr -signkey http-server-localhost.key -CAcreateserial -out http-server-localhost.crt -days 1000
-```
-
-# Git
+## git
 ```sh
 sudo apt-get install -y git
 ```
 
-# nvm
+## 言語系
+### nvm
 https://github.com/nvm-sh/nvm#git-install
 
 ```sh
@@ -60,7 +52,7 @@ echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This
 source ~/.profile
 ```
 
-# yarn
+### yarn
 https://yarnpkg.com/en/docs/install#debian-stable
 
 ```sh
@@ -69,10 +61,15 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt update && sudo apt install yarn -y
 ```
 
-# pyenv
+### pyenv
 https://github.com/pyenv/pyenv#installation
+https://github.com/pyenv/pyenv/wiki/Common-build-problems#prerequisites
 
 ```sh
+sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
+  libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+  xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+
 cd ~/
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 echo '' >> ~/.profile
@@ -83,10 +80,7 @@ echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nf
 source ~/.profile
 ```
 
-※ `pyenv install` でエラーがでたら下記を参考にする  
-https://github.com/pyenv/pyenv/wiki/Common-build-problems#prerequisites
-
-# dotnet
+### dotnet
 https://docs.microsoft.com/ja-jp/dotnet/core/install/linux-ubuntu
 
 ```sh
@@ -98,7 +92,43 @@ sudo apt-get update; \
   sudo apt-get install -y dotnet-sdk-3.1
 ```
 
-# az
+### phpenv
+https://github.com/phpenv/phpenv-installer
+
+```sh
+curl -L https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer | bash
+echo '' >> ~/.profile
+echo '# phpenv' >> ~/.profile
+echo 'export PHPENV_ROOT="$HOME/.phpenv"' >> ~/.profile
+echo -e 'if [ -d "${PHPENV_ROOT}" ]; then\n  export PATH="${PHPENV_ROOT}/bin:${PATH}"\n  eval "$(phpenv init -)"\nfi' >> ~/.profile
+source ~/.profile
+sudo apt-get update
+sudo apt -y install build-essential
+sudo apt -y install \
+  libxml2-dev \
+  libssl-dev \
+  libbz2-dev \
+  libcurl4-openssl-dev \
+  libjpeg-dev \
+  libpng-dev \
+  libmcrypt-dev \
+  libreadline-dev \
+  libtidy-dev \
+  libxslt-dev \
+  libzip-dev \
+  autoconf
+```
+
+### composer
+```sh
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+```
+
+## ツール系
+### az
 https://docs.microsoft.com/ja-jp/cli/azure/install-azure-cli-apt?view=azure-cli-latest
 
 ```sh
@@ -106,7 +136,28 @@ cd ~/
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ```
 
-# docker (WSL1)
+### azure functions
+https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux
+
+```sh
+wget -q https://packages.microsoft.com/config/ubuntu/18.10/packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo apt-get update
+sudo apt-get install -y azure-functions-core-tools
+```
+
+### openssl (自己証明書)
+```
+sudo apt install openssl
+cd ~/
+mkdir certs
+cd certs
+openssl genrsa -out http-server-localhost.key 2048
+openssl req -new -key http-server-localhost.key -subj "/CN=ymat" -out http-server-localhost.csr
+openssl x509 -req -in http-server-localhost.csr -signkey http-server-localhost.key -CAcreateserial -out http-server-localhost.crt -days 1000
+```
+
+### docker (WSL1)
 https://docs.docker.com/install/linux/docker-ce/ubuntu/
 
 ```sh
@@ -141,58 +192,5 @@ echo 'alias docker="DOCKER_HOST=${DOCKER_HOST} docker"' >> ~/.profile
 source ~/.profile
 ```
 
-# docker (WSL2)
+### docker (WSL2)
 https://www.docker.com/products/docker-desktop
-
-# phpenv
-https://github.com/phpenv/phpenv-installer
-
-```sh
-curl -L https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer | bash
-echo '' >> ~/.profile
-echo '# phpenv' >> ~/.profile
-echo 'export PHPENV_ROOT="$HOME/.phpenv"' >> ~/.profile
-echo -e 'if [ -d "${PHPENV_ROOT}" ]; then\n  export PATH="${PHPENV_ROOT}/bin:${PATH}"\n  eval "$(phpenv init -)"\nfi' >> ~/.profile
-source ~/.profile
-sudo apt-get update
-sudo apt -y install build-essential
-sudo apt -y install \
-  libxml2-dev \
-  libssl-dev \
-  libbz2-dev \
-  libcurl4-openssl-dev \
-  libjpeg-dev \
-  libpng-dev \
-  libmcrypt-dev \
-  libreadline-dev \
-  libtidy-dev \
-  libxslt-dev \
-  libzip-dev \
-  autoconf
-```
-
-# composer
-```sh
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-php composer-setup.php
-php -r "unlink('composer-setup.php');"
-```
-
-# azure functions
-https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux
-
-```sh
-wget -q https://packages.microsoft.com/config/ubuntu/18.10/packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb
-sudo apt-get update
-sudo apt-get install -y azure-functions-core-tools
-```
-
-# certbot
-```sh
-sudo apt install software-properties-common
-sudo add-apt-repository universe
-sudo add-apt-repository ppa:certbot/certbot
-sudo apt update
-```
