@@ -62,7 +62,7 @@ sudo apt update && sudo apt install yarn -y
 ```
 
 ### pyenv
-https://github.com/pyenv/pyenv#installation
+https://github.com/pyenv/pyenv#installation  
 https://github.com/pyenv/pyenv/wiki/Common-build-problems#prerequisites
 
 ```sh
