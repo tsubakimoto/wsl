@@ -139,13 +139,6 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 ### azure functions
 https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux
 
-```sh
-wget -q https://packages.microsoft.com/config/ubuntu/18.10/packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb
-sudo apt-get update
-sudo apt-get install -y azure-functions-core-tools
-```
-
 ### openssl (自己証明書)
 ```
 sudo apt install openssl
