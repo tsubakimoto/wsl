@@ -41,7 +41,7 @@ https://github.com/nvm-sh/nvm#git-install
 cd ~/
 git clone https://github.com/nvm-sh/nvm.git .nvm
 cd ~/.nvm
-git checkout v0.35.0
+git checkout v0.36.0
 . nvm.sh
 cd ~/
 echo '' >> ~/.profile
