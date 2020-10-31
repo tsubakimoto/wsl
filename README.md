@@ -150,6 +150,9 @@ openssl req -new -key http-server-localhost.key -subj "/CN=ymat" -out http-serve
 openssl x509 -req -in http-server-localhost.csr -signkey http-server-localhost.key -CAcreateserial -out http-server-localhost.crt -days 1000
 ```
 
+### kubectl
+https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux
+
 ### docker (WSL1)
 https://docs.docker.com/install/linux/docker-ce/ubuntu/
 
