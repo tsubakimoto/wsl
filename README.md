@@ -34,6 +34,33 @@ sudo apt-get install -y git
 ```
 
 ## 言語系
+### anyenv
+https://github.com/anyenv/anyenv
+https://qiita.com/y4m3/items/61f99b19bc82c9591b8f#anyenv-update-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+
+```sh
+cd ~/
+git clone https://github.com/anyenv/anyenv ~/.anyenv
+echo '' >> ~/.profile
+echo '# anyenv' >> ~/.profile
+echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.profile
+echo 'eval "$(anyenv init -)"' >> ~/.profile
+
+# シェル再起動
+
+~/.anyenv/bin/anyenv init
+anyenv install --init
+mkdir -p $(anyenv root)/plugins
+git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
+```
+
+#### *env install
+```sh
+anyenv install nodenv
+anyenv install phpenv
+anyenv install pyenv
+```
+
 ### nvm
 https://github.com/nvm-sh/nvm#git-install
 
