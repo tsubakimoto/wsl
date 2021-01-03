@@ -29,6 +29,7 @@ sudo timedatectl set-timezone 'Asia/Tokyo'
 ```sh
 cd ~
 ln -sf /mnt/d/src/ ~/src
+ln -sf /mnt/c/Users/yuta/.ssh ~/.ssh
 ```
 
 ## git
