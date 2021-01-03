@@ -28,17 +28,22 @@ cd ~
 ln -sf /mnt/d/src/ ~/src
 ```
 
+## git
+```sh
+sudo apt-get install -y git
+```
+
 ## SSHキー
 ```sh
-cd ~
-mkdir .ssh
+mkdir ~/.ssh
 ```
 
 OneDriveからSSHキーをコピーする
 
-## git
 ```sh
-sudo apt-get install -y git
+chmod 700 ~/.ssh
+chmod 400 ~/.ssh/id_rsa
+ssh -T git@github.com
 ```
 
 ## 言語系
