@@ -64,7 +64,7 @@ anyenv install phpenv
 anyenv install pyenv
 ```
 
-### nvm
+### nvm (obsoluted)
 https://github.com/nvm-sh/nvm#git-install
 
 ```sh
@@ -91,7 +91,7 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt update && sudo apt install yarn -y
 ```
 
-### pyenv
+### pyenv (obsoluted)
 https://github.com/pyenv/pyenv#installation  
 https://github.com/pyenv/pyenv/wiki/Common-build-problems#prerequisites
 
@@ -122,7 +122,7 @@ sudo apt-get update; \
   sudo apt-get install -y dotnet-sdk-5.0
 ```
 
-### phpenv
+### phpenv (obsoluted)
 https://github.com/phpenv/phpenv-installer
 
 ```sh
