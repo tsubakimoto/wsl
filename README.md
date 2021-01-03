@@ -20,17 +20,21 @@ sudo sed -i -e 's%http://.*.ubuntu.com%http://ftp.jaist.ac.jp/pub/Linux%g' /etc/
 sudo apt update -y
 sudo apt upgrade -y
 sudo timedatectl set-timezone 'Asia/Tokyo'
-#echo '[interop]' | sudo tee -a /etc/wsl.conf > /dev/null
-#echo 'appendWindowsPath = false' | sudo tee -a /etc/wsl.conf > /dev/null
-#echo 'enabled = false' | sudo tee -a /etc/wsl.conf > /dev/null
 ```
 
 ## シンボリックリンク
 ```sh
 cd ~
 ln -sf /mnt/d/src/ ~/src
-ln -sf /mnt/c/Users/yuta/.ssh ~/.ssh
 ```
+
+## SSHキー
+```sh
+cd ~
+mkdir .ssh
+```
+
+OneDriveからSSHキーをコピーする
 
 ## git
 ```sh
