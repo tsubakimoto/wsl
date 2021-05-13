@@ -48,8 +48,8 @@ ssh -T git@github.com
 
 ## 言語系
 ### anyenv
-https://github.com/anyenv/anyenv
-https://qiita.com/y4m3/items/61f99b19bc82c9591b8f#anyenv-update-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+- https://github.com/anyenv/anyenv
+- https://qiita.com/y4m3/items/61f99b19bc82c9591b8f#anyenv-update-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
 ```sh
 cd ~/
