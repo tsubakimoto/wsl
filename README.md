@@ -68,6 +68,10 @@ git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv
 ```
 
 #### *env install
+- https://github.com/nodenv/nodenv
+- https://github.com/phpenv/phpenv
+- https://github.com/pyenv/pyenv
+
 ```sh
 anyenv install nodenv
 anyenv install phpenv
