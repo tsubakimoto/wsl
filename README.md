@@ -78,6 +78,13 @@ anyenv install phpenv
 anyenv install pyenv
 ```
 
+phpenvでのPHPビルドに必要なパッケージ
+
+```sh
+sudo apt -y install build-essential
+sudo apt -y install libxml2-dev libssl-dev libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libmcrypt-dev libreadline-dev libtidy-dev libxslt-dev libzip-dev autoconf pkg-config
+```
+
 ### nvm (obsoluted)
 https://github.com/nvm-sh/nvm#git-install
 
