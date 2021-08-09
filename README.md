@@ -98,6 +98,19 @@ sudo apt -y install build-essential
 sudo apt -y install libxml2-dev libssl-dev libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libmcrypt-dev libreadline-dev libtidy-dev libxslt-dev libzip-dev autoconf pkg-config
 ```
 
+### dotnet
+https://docs.microsoft.com/ja-jp/dotnet/core/install/linux-ubuntu
+
+```sh
+wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo apt-get update; \
+  sudo apt-get install -y apt-transport-https && \
+  sudo apt-get update && \
+  sudo apt-get install -y dotnet-sdk-5.0
+```
+
+## ツール系
 ### yarn
 https://yarnpkg.com/en/docs/install
 
@@ -112,19 +125,6 @@ https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md
 wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -O - -q | php -- --quiet
 ```
 
-### dotnet
-https://docs.microsoft.com/ja-jp/dotnet/core/install/linux-ubuntu
-
-```sh
-wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb
-sudo apt-get update; \
-  sudo apt-get install -y apt-transport-https && \
-  sudo apt-get update && \
-  sudo apt-get install -y dotnet-sdk-5.0
-```
-
-## ツール系
 ### az
 https://docs.microsoft.com/ja-jp/cli/azure/install-azure-cli-apt?view=azure-cli-latest
 
