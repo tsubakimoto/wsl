@@ -99,20 +99,17 @@ sudo apt -y install libxml2-dev libssl-dev libbz2-dev libcurl4-openssl-dev libjp
 ```
 
 ### yarn
-https://yarnpkg.com/en/docs/install#debian-stable
+https://yarnpkg.com/en/docs/install
 
 ```sh
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt update && sudo apt install yarn -y
+npm install --global yarn
 ```
 
 ### composer
+https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md
+
 ```sh
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-php composer-setup.php
-php -r "unlink('composer-setup.php');"
+wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -O - -q | php -- --quiet
 ```
 
 ### dotnet
