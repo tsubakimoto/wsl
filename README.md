@@ -31,6 +31,21 @@ ln -sf /mnt/d/src/ ~/src
 ## git
 ```sh
 sudo apt-get install -y git
+git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe"
+```
+
+https://blog.shibayan.jp/entry/20210728/1627450686#Git-%E3%81%AE%E8%AA%8D%E8%A8%BC%E6%83%85%E5%A0%B1%E3%82%92-Windows-%E5%81%B4%E3%81%A8%E5%85%B1%E6%9C%89
+
+### business
+```
+git config --global user.name "y-matsumura"
+git config --global user.email "y-matsumura@alterbooth.com"
+```
+
+### private
+```
+git config --global user.name "tsubakimoto"
+git config --global user.email "tkmbmbr@gmail.com"
 ```
 
 ## SSHキー
