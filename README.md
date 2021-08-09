@@ -98,24 +98,6 @@ sudo apt -y install build-essential
 sudo apt -y install libxml2-dev libssl-dev libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libmcrypt-dev libreadline-dev libtidy-dev libxslt-dev libzip-dev autoconf pkg-config
 ```
 
-### nvm (obsoluted)
-https://github.com/nvm-sh/nvm#git-install
-
-```sh
-cd ~/
-git clone https://github.com/nvm-sh/nvm.git .nvm
-cd ~/.nvm
-git checkout v0.36.0
-. nvm.sh
-cd ~/
-echo '' >> ~/.profile
-echo '# nvm' >> ~/.profile
-echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.profile
-echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.profile
-echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion' >> ~/.profile
-source ~/.profile
-```
-
 ### yarn
 https://yarnpkg.com/en/docs/install#debian-stable
 
@@ -125,23 +107,12 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt update && sudo apt install yarn -y
 ```
 
-### pyenv (obsoluted)
-https://github.com/pyenv/pyenv#installation  
-https://github.com/pyenv/pyenv/wiki/Common-build-problems#prerequisites
-
+### composer
 ```sh
-sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
-  libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-  xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
-
-cd ~/
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-echo '' >> ~/.profile
-echo '# pyenv' >> ~/.profile
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
-echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
-echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.profile
-source ~/.profile
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
 ```
 
 ### dotnet
@@ -154,41 +125,6 @@ sudo apt-get update; \
   sudo apt-get install -y apt-transport-https && \
   sudo apt-get update && \
   sudo apt-get install -y dotnet-sdk-5.0
-```
-
-### phpenv (obsoluted)
-https://github.com/phpenv/phpenv-installer
-
-```sh
-curl -L https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer | bash
-echo '' >> ~/.profile
-echo '# phpenv' >> ~/.profile
-echo 'export PHPENV_ROOT="$HOME/.phpenv"' >> ~/.profile
-echo -e 'if [ -d "${PHPENV_ROOT}" ]; then\n  export PATH="${PHPENV_ROOT}/bin:${PATH}"\n  eval "$(phpenv init -)"\nfi' >> ~/.profile
-source ~/.profile
-sudo apt-get update
-sudo apt -y install build-essential
-sudo apt -y install \
-  libxml2-dev \
-  libssl-dev \
-  libbz2-dev \
-  libcurl4-openssl-dev \
-  libjpeg-dev \
-  libpng-dev \
-  libmcrypt-dev \
-  libreadline-dev \
-  libtidy-dev \
-  libxslt-dev \
-  libzip-dev \
-  autoconf
-```
-
-### composer
-```sh
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-php composer-setup.php
-php -r "unlink('composer-setup.php');"
 ```
 
 ## ツール系
@@ -216,41 +152,3 @@ openssl x509 -req -in http-server-localhost.csr -signkey http-server-localhost.k
 
 ### kubectl
 https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux
-
-### docker (WSL1)
-https://docs.docker.com/install/linux/docker-ce/ubuntu/
-
-```sh
-sudo apt-get update
-sudo apt-get install -y \
-  apt-transport-https \
-  ca-certificates \
-  curl \
-  gnupg-agent \
-  software-properties-common
-
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-sudo apt-key fingerprint 0EBFCD88
-sudo add-apt-repository \
-  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) \
-  stable"
-
-sudo apt-get update
-sudo apt-get install -y \
-  docker-ce \
-  docker-ce-cli \
-  containerd.io
-
-apt-cache madison docker-ce
-
-echo '' >> ~/.profile
-echo '# docker' >> ~/.profile
-echo 'export DOCKER_HOST=tcp://localhost:2375' >> ~/.profile
-echo 'alias docker="DOCKER_HOST=${DOCKER_HOST} docker"' >> ~/.profile
-source ~/.profile
-```
-
-### docker (WSL2)
-https://www.docker.com/products/docker-desktop
