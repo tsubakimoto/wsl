@@ -73,11 +73,9 @@ echo '' >> ~/.profile
 echo '# anyenv' >> ~/.profile
 echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.profile
 echo 'eval "$(anyenv init -)"' >> ~/.profile
-
-# シェル再起動
-
+exec $SHELL -l
 ~/.anyenv/bin/anyenv init
-anyenv install --init
+anyenv install --force-init
 mkdir -p $(anyenv root)/plugins
 git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
 ```
@@ -91,6 +89,7 @@ git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv
 anyenv install nodenv
 anyenv install phpenv
 anyenv install pyenv
+exec $SHELL -l
 ```
 
 phpenvでのPHPビルドに必要なパッケージ
