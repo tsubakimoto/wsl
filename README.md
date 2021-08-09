@@ -20,12 +20,10 @@ sudo sed -i -e 's%http://.*.ubuntu.com%http://ftp.jaist.ac.jp/pub/Linux%g' /etc/
 sudo apt update -y
 sudo apt upgrade -y
 sudo timedatectl set-timezone 'Asia/Tokyo'
-```
-
-## シンボリックリンク
-```sh
-cd ~
-ln -sf /mnt/d/src/ ~/src
+sudo echo -e "[interop]\nappendWindowsPath=false" > /etc/wsl.conf
+echo 'alias code="/mnt/c/Users/yuta/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"' > .bash_profile
+mkdir ~/src
+exec $SHELL -l
 ```
 
 ## git
