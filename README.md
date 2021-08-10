@@ -22,7 +22,7 @@ sudo apt upgrade -y
 sudo timedatectl set-timezone 'Asia/Tokyo'
 echo -e "[interop]\nappendWindowsPath=false" | sudo sh -c 'cat - > /etc/wsl.conf'
 echo >> .profile
-echo 'alias code="/mnt/c/Users/yuta/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"' > .profile
+echo 'alias code="/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin/code"' > .profile
 mkdir ~/src
 exec $SHELL -l
 ```
