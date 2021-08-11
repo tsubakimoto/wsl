@@ -20,6 +20,7 @@ sudo sed -i -e 's%http://.*.ubuntu.com%http://ftp.jaist.ac.jp/pub/Linux%g' /etc/
 sudo apt update -y
 sudo apt upgrade -y
 sudo timedatectl set-timezone 'Asia/Tokyo'
+sudo apt-get install -y net-tools
 echo -e "[interop]\nappendWindowsPath=false" | sudo sh -c 'cat - > /etc/wsl.conf'
 echo >> .profile
 echo 'alias code="/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin/code"' > .profile
