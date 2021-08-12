@@ -1,10 +1,4 @@
 # インストール
-## WSL
-```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-```
-
-## WSL2
 https://docs.microsoft.com/ja-jp/windows/wsl/install-win10
 
 ```powershell
