@@ -110,7 +110,14 @@ sudo apt-get update; \
 https://yarnpkg.com/en/docs/install
 
 ```sh
-npm install --global yarn
+npm install -g yarn
+```
+
+### Vue.js
+https://v3.ja.vuejs.org/guide/installation.html
+
+```sh
+npm install -g @vue/cli
 ```
 
 ### composer
