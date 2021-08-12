@@ -118,6 +118,7 @@ https://v3.ja.vuejs.org/guide/installation.html
 
 ```sh
 npm install -g @vue/cli
+npm install -g @vue/cli-service-global
 ```
 
 ### composer
