@@ -76,6 +76,8 @@ nodenvで[rehashを自動化するプラグイン](https://github.com/nodenv/nod
 
 ```sh
 git clone https://github.com/nodenv/nodenv-package-rehash.git "$(nodenv root)"/plugins/nodenv-package-rehash
+nodenv hooks install
+nodenv package-hooks install --all
 ```
 
 phpenvでのPHPビルドに必要なパッケージ
