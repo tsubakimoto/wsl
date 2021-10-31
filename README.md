@@ -72,6 +72,12 @@ anyenv install pyenv
 exec $SHELL -l
 ```
 
+nodenvで[rehashを自動化するプラグイン](https://github.com/nodenv/nodenv-package-rehash#install-via-git-recommended)
+
+```sh
+git clone https://github.com/nodenv/nodenv-package-rehash.git "$(nodenv root)"/plugins/nodenv-package-rehash
+```
+
 phpenvでのPHPビルドに必要なパッケージ
 
 ```sh
