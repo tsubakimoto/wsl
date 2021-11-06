@@ -72,6 +72,14 @@ anyenv install pyenv
 exec $SHELL -l
 ```
 
+#### anyenv plugins
+anyenvの[アップデートに関するプラグイン](https://github.com/znz/anyenv-update)
+
+```
+mkdir -p $(anyenv root)/plugins
+git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
+```
+
 nodenvで[rehashを自動化するプラグイン](https://github.com/nodenv/nodenv-package-rehash#install-via-git-recommended)
 
 ```sh
