@@ -20,6 +20,12 @@ mkdir ~/src
 exec $SHELL -l
 ```
 
+ディストリビューションを停止する
+
+```sh
+wsl --shutdown -d Ubuntu-20.04
+```
+
 ## git
 ```sh
 sudo apt-get install -y git
