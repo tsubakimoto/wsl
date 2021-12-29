@@ -9,20 +9,17 @@ wsl --set-default-version 2
 
 # セットアップ
 ## 初期構築
+PowerShellで以下を実行する。
+
 ```sh
+wsl -d Ubuntu-20.04
 sudo sed -i -e 's%http://.*.ubuntu.com%http://ftp.jaist.ac.jp/pub/Linux%g' /etc/apt/sources.list
 sudo apt update -y
 sudo apt upgrade -y
 sudo timedatectl set-timezone 'Asia/Tokyo'
 sudo apt-get install -y net-tools
 echo -e "[interop]\nappendWindowsPath=false" | sudo sh -c 'cat - > /etc/wsl.conf'
-mkdir ~/src
-exec $SHELL -l
-```
-
-ディストリビューションを停止する
-
-```sh
+exit
 wsl --shutdown -d Ubuntu-20.04
 ```
 
@@ -124,11 +121,6 @@ wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902c
 
 ### az
 https://docs.microsoft.com/ja-jp/cli/azure/install-azure-cli-apt?view=azure-cli-latest
-
-```sh
-cd ~/
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-```
 
 ### azure functions
 https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux
