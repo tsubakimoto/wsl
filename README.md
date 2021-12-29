@@ -94,15 +94,6 @@ sudo apt -y install libxml2-dev libssl-dev libbz2-dev libcurl4-openssl-dev libjp
 ### dotnet
 https://docs.microsoft.com/ja-jp/dotnet/core/install/linux-ubuntu
 
-```sh
-wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb
-sudo apt-get update; \
-  sudo apt-get install -y apt-transport-https && \
-  sudo apt-get update && \
-  sudo apt-get install -y dotnet-sdk-5.0
-```
-
 ## ツール系
 
 ### docker
