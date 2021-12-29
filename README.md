@@ -94,8 +94,8 @@ https://docs.microsoft.com/ja-jp/dotnet/core/install/linux-ubuntu
 ## ツール系
 
 ### docker
-https://qiita.com/ohtsuka1317/items/617a865b8a9d4fb67989
-https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+- https://qiita.com/ohtsuka1317/items/617a865b8a9d4fb67989
+- https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
 
 ### yarn
 https://yarnpkg.com/en/docs/install
