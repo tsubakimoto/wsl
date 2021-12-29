@@ -51,6 +51,8 @@ mkdir ~/.ssh
 ### anyenv
 - https://github.com/anyenv/anyenv
 - https://qiita.com/y4m3/items/61f99b19bc82c9591b8f#anyenv-update-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+- [anyenvのアップデートに関するプラグイン](https://github.com/znz/anyenv-update)
+- [nodenvでrehashを自動化するプラグイン](https://github.com/nodenv/nodenv-package-rehash#install-via-git-recommended)
 
 ```sh
 cd ~/
@@ -62,8 +64,13 @@ echo 'eval "$(anyenv init -)"' >> ~/.profile
 exec $SHELL -l
 ~/.anyenv/bin/anyenv init
 anyenv install --force-init
+
 mkdir -p $(anyenv root)/plugins
 git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
+
+git clone https://github.com/nodenv/nodenv-package-rehash.git "$(nodenv root)"/plugins/nodenv-package-rehash
+nodenv hooks install
+nodenv package-hooks install --all
 ```
 
 #### *env install
@@ -78,24 +85,7 @@ anyenv install pyenv
 exec $SHELL -l
 ```
 
-#### anyenv plugins
-anyenvの[アップデートに関するプラグイン](https://github.com/znz/anyenv-update)
-
-```
-mkdir -p $(anyenv root)/plugins
-git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
-```
-
-nodenvで[rehashを自動化するプラグイン](https://github.com/nodenv/nodenv-package-rehash#install-via-git-recommended)
-
-```sh
-git clone https://github.com/nodenv/nodenv-package-rehash.git "$(nodenv root)"/plugins/nodenv-package-rehash
-nodenv hooks install
-nodenv package-hooks install --all
-```
-
-phpenvでのPHPビルドに必要なパッケージ
-
+#### phpenvでのPHPビルドに必要なパッケージ
 ```sh
 sudo apt -y install build-essential
 sudo apt -y install libxml2-dev libssl-dev libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libmcrypt-dev libreadline-dev libtidy-dev libxslt-dev libzip-dev autoconf pkg-config
