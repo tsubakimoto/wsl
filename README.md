@@ -97,6 +97,33 @@ https://docs.microsoft.com/ja-jp/dotnet/core/install/linux-ubuntu
 - https://qiita.com/ohtsuka1317/items/617a865b8a9d4fb67989
 - https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
 
+```sh
+sudo apt-get update -y
+
+sudo apt-get install -y \
+  apt-transport-https \
+  ca-certificates \
+  curl \
+  gnupg \
+  lsb-release
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+echo \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get update -y
+
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+
+sudo usermod -aG docker $USER
+
+#ターミナルを再起動する
+
+sudo /etc/init.d/docker start
+```
+
 ### yarn
 https://yarnpkg.com/en/docs/install
 
