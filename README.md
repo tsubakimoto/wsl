@@ -85,7 +85,7 @@ exec $SHELL -l
 #### phpenvでのPHPビルドに必要なパッケージ
 ```sh
 sudo apt -y install build-essential
-sudo apt -y install libxml2-dev libssl-dev libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libmcrypt-dev libreadline-dev libtidy-dev libxslt-dev libzip-dev autoconf pkg-config
+sudo apt -y install libxml2-dev libssl-dev libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libmcrypt-dev libreadline-dev libtidy-dev libxslt-dev libzip-dev autoconf pkg-config libsqlite3-dev libonig-dev
 ```
 
 ### dotnet
