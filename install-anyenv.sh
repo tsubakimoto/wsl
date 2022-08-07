@@ -4,21 +4,17 @@ set -x
 # Install anyenv
 cd ~/
 git clone https://github.com/anyenv/anyenv ~/.anyenv
-#echo '' >> ~/.profile
-#echo '# anyenv' >> ~/.profile
-#echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.profile
-#echo 'eval "$(anyenv init -)"' >> ~/.profile
+echo '' >> ~/.profile
+echo '# anyenv' >> ~/.profile
+echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.profile
+echo 'eval "$(anyenv init -)"' >> ~/.profile
 exec $SHELL -l
 ~/.anyenv/bin/anyenv init
 anyenv install --force-init
 
-## Install anyenv plugins
+# Install anyenv plugins
 mkdir -p $(anyenv root)/plugins
 git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
-
-git clone https://github.com/nodenv/nodenv-package-rehash.git "$(nodenv root)"/plugins/nodenv-package-rehash
-nodenv hooks install
-nodenv package-hooks install --all
 
 # Install binaries for phpenv
 cd ~/
@@ -31,3 +27,8 @@ anyenv install nodenv
 anyenv install phpenv
 anyenv install pyenv
 exec $SHELL -l
+
+# Install nodenv plugin
+git clone https://github.com/nodenv/nodenv-package-rehash.git "$(nodenv root)"/plugins/nodenv-package-rehash
+nodenv hooks install
+nodenv package-hooks install --all
