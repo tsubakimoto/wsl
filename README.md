@@ -52,40 +52,8 @@ mkdir ~/.ssh
 - [nodenvでrehashを自動化するプラグイン](https://github.com/nodenv/nodenv-package-rehash#install-via-git-recommended)
 
 ```sh
-cd ~/
-git clone https://github.com/anyenv/anyenv ~/.anyenv
-echo '' >> ~/.profile
-echo '# anyenv' >> ~/.profile
-echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.profile
-echo 'eval "$(anyenv init -)"' >> ~/.profile
-exec $SHELL -l
-~/.anyenv/bin/anyenv init
-anyenv install --force-init
-
-mkdir -p $(anyenv root)/plugins
-git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
-
-git clone https://github.com/nodenv/nodenv-package-rehash.git "$(nodenv root)"/plugins/nodenv-package-rehash
-nodenv hooks install
-nodenv package-hooks install --all
-```
-
-#### *env install
-- https://github.com/nodenv/nodenv
-- https://github.com/phpenv/phpenv
-- https://github.com/pyenv/pyenv
-
-```sh
-anyenv install nodenv
-anyenv install phpenv
-anyenv install pyenv
-exec $SHELL -l
-```
-
-#### phpenvでのPHPビルドに必要なパッケージ
-```sh
-sudo apt -y install build-essential
-sudo apt -y install libxml2-dev libssl-dev libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libmcrypt-dev libreadline-dev libtidy-dev libxslt-dev libzip-dev autoconf pkg-config libsqlite3-dev libonig-dev
+chmod +x ~/config/wsl/install-anyenv.sh
+~/config/wsl/install-anyenv.sh
 ```
 
 ### dotnet
