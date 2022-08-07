@@ -8,7 +8,7 @@ wsl --set-default-version 2
 ```
 
 # セットアップ
-## 初期構築
+## installation
 PowerShellで以下を実行する。
 
 ```sh
@@ -25,26 +25,16 @@ wsl --shutdown -d Ubuntu-20.04
 
 ## git
 ```sh
+cd ~
 sudo apt-get install -y git
 git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
+git clone https://github.com/tsubakimoto/config.git
+git clone https://github.com/tsubakimoto/dotfiles.git
 ```
 
 - https://docs.microsoft.com/ja-jp/windows/wsl/tutorials/wsl-git
 - https://blog.shibayan.jp/entry/20210728/1627450686#Git-%E3%81%AE%E8%AA%8D%E8%A8%BC%E6%83%85%E5%A0%B1%E3%82%92-Windows-%E5%81%B4%E3%81%A8%E5%85%B1%E6%9C%89
-
-## config
-```
-cd ~
-git clone https://github.com/tsubakimoto/config.git
-```
-
-## dotfiles
-```sh
-cd ~
-git clone https://github.com/tsubakimoto/dotfiles.git
-chmod +x ./dotfiles/wsl/install.sh
-./dotfiles/wsl/install.sh
-```
+- https://github.com/tsubakimoto/dotfiles.git
 
 ## SSHキー
 ```sh
