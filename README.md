@@ -26,7 +26,7 @@ wsl --shutdown -d Ubuntu-20.04
 ## git
 ```sh
 sudo apt-get install -y git
-git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe"
+git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
 ```
 
 - https://docs.microsoft.com/ja-jp/windows/wsl/tutorials/wsl-git
