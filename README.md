@@ -88,6 +88,9 @@ sudo usermod -aG docker $USER
 exec $SHELL -l
 ```
 
+#### startup
+`shell:startup` -> [wsl-service-start.bat](./wsl-service-start.bat)
+
 ### yarn
 https://yarnpkg.com/en/docs/install
 
