@@ -3,13 +3,8 @@ set -xe
 
 # Install anyenv
 git clone https://github.com/anyenv/anyenv $HOME/.anyenv
-echo '' >> $HOME/.profile
-echo '# anyenv' >> $HOME/.profile
-echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> $HOME/.profile
-echo 'eval "$(anyenv init -)"' >> $HOME/.profile
-exec $SHELL -l
+echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.bash_profile
 $HOME/.anyenv/bin/anyenv init
-anyenv install --force-init
 
 # Install anyenv plugins
 ANYENV_ROOT=`anyenv root`
