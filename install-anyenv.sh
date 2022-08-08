@@ -5,6 +5,7 @@ set -xe
 git clone https://github.com/anyenv/anyenv $HOME/.anyenv
 echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.bash_profile
 $HOME/.anyenv/bin/anyenv init
+yes | anyenv install --init
 
 # Install anyenv plugins
 ANYENV_ROOT=`anyenv root`
