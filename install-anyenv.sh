@@ -4,7 +4,6 @@ set -x
 # Install anyenv
 git clone https://github.com/anyenv/anyenv $HOME/.anyenv
 echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> $HOME/.bash_profile
-source $HOME/.bash_profile
 $HOME/.anyenv/bin/anyenv init
 echo 'eval "$(anyenv init -)"' >> $HOME/.bash_profile
 source $HOME/.bash_profile
