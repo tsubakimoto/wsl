@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+set -xe
 
 # Install anyenv
 git clone https://github.com/anyenv/anyenv $HOME/.anyenv
@@ -29,3 +29,4 @@ NODENV_ROOT=`nodenv root`
 git clone https://github.com/nodenv/nodenv-package-rehash.git $NODENV_ROOT/plugins/nodenv-package-rehash
 nodenv hooks install
 nodenv package-hooks install --all
+source $HOME/.bash_profile
