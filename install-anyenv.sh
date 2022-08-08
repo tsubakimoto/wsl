@@ -21,10 +21,12 @@ sudo apt -y install libxml2-dev libssl-dev libbz2-dev libcurl4-openssl-dev libjp
 anyenv install nodenv
 anyenv install phpenv
 anyenv install pyenv
-exec $SHELL -l
+#exec $SHELL -l
 
 # Install nodenv plugin
 NODENV_ROOT=`nodenv root`
 git clone https://github.com/nodenv/nodenv-package-rehash.git $NODENV_ROOT/plugins/nodenv-package-rehash
 nodenv hooks install
 nodenv package-hooks install --all
+
+exec $SHELL -l
