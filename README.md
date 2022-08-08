@@ -7,7 +7,10 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 wsl --set-default-version 2
 ```
 
-# セットアップ
+# Auto setup
+https://gist.github.com/tsubakimoto/063ada9dd2ff4e94bff58446bfdb90fd
+
+# Manual setup
 ## installation
 PowerShellで以下を実行する。
 
@@ -49,8 +52,8 @@ mkdir ~/.ssh
 - [nodenvでrehashを自動化するプラグイン](https://github.com/nodenv/nodenv-package-rehash#install-via-git-recommended)
 
 ```sh
-chmod +x ~/config/wsl/install-anyenv.sh
-~/config/wsl/install-anyenv.sh
+chmod +x $HOME/config/wsl/install-anyenv.sh
+$HOME/config/wsl/install-anyenv.sh
 ```
 
 ### dotnet
@@ -82,7 +85,7 @@ sudo service docker start
 
 sudo usermod -aG docker $USER
 
-#ターミナルを再起動する
+exec $SHELL -l
 ```
 
 ### yarn
