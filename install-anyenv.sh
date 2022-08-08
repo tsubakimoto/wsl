@@ -1,34 +1,33 @@
 #!/bin/bash
-set -x
+set -xe
 
 # Install anyenv
-cd ~/
-git clone https://github.com/anyenv/anyenv ~/.anyenv
-echo '' >> ~/.profile
-echo '# anyenv' >> ~/.profile
-echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.profile
-echo 'eval "$(anyenv init -)"' >> ~/.profile
+git clone https://github.com/anyenv/anyenv $HOME/.anyenv
+echo '' >> $HOME/.profile
+echo '# anyenv' >> $HOME/.profile
+echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> $HOME/.profile
+echo 'eval "$(anyenv init -)"' >> $HOME/.profile
 exec $SHELL -l
-~/.anyenv/bin/anyenv init
+$HOME/.anyenv/bin/anyenv init
 anyenv install --force-init
 
 # Install anyenv plugins
-mkdir -p $(anyenv root)/plugins
-git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
+ANYENV_ROOT=`anyenv root`
+mkdir -p $ANYENV_ROOT/plugins
+git clone https://github.com/znz/anyenv-update.git $ANYENV_ROOT/plugins/anyenv-update
 
 # Install binaries for phpenv
-cd ~/
 apt -y install build-essential
 apt -y install libxml2-dev libssl-dev libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libmcrypt-dev libreadline-dev libtidy-dev libxslt-dev libzip-dev autoconf pkg-config libsqlite3-dev libonig-dev
 
 # Install *env
-cd ~/
 anyenv install nodenv
 anyenv install phpenv
 anyenv install pyenv
 exec $SHELL -l
 
 # Install nodenv plugin
-git clone https://github.com/nodenv/nodenv-package-rehash.git "$(nodenv root)"/plugins/nodenv-package-rehash
+NODENV_ROOT=`nodenv root`
+git clone https://github.com/nodenv/nodenv-package-rehash.git $NODENV_ROOT/plugins/nodenv-package-rehash
 nodenv hooks install
 nodenv package-hooks install --all
