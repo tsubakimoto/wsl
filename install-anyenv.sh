@@ -22,6 +22,7 @@ sudo apt -y install libxml2-dev libssl-dev libbz2-dev libcurl4-openssl-dev libjp
 anyenv install nodenv
 anyenv install phpenv
 anyenv install pyenv
+source $HOME/.bash_profile
 
 # Install nodenv plugin
 NODENV_ROOT=`nodenv root`
