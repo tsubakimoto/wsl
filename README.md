@@ -106,6 +106,16 @@ exec $SHELL -l
 #### startup
 `shell:startup` -> [wsl-service-start.bat](./wsl-service-start.bat)
 
+### Azure tools
+```sh
+chmod +x $HOME/config/wsl/install-azure-tools.sh
+$HOME/config/wsl/install-azure-tools.sh
+```
+
+- [install-azure-tools.sh](./install-azure-tools.sh)
+  - [Azure CLI](https://docs.microsoft.com/ja-jp/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
+  - [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux)
+
 ### yarn
 https://yarnpkg.com/en/docs/install
 
@@ -127,12 +137,6 @@ https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md
 ```sh
 wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -O - -q | php -- --quiet
 ```
-
-### az
-https://docs.microsoft.com/ja-jp/cli/azure/install-azure-cli-apt?view=azure-cli-latest
-
-### azure functions
-https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux
 
 ### openssl (自己証明書)
 ```
