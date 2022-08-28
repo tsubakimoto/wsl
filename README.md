@@ -56,6 +56,8 @@ chmod +x $HOME/config/wsl/install-anyenv.sh
 $HOME/config/wsl/install-anyenv.sh
 ```
 
+[install-anyenv.sh](./install-anyenv.sh)
+
 ### dotnet
 https://docs.microsoft.com/ja-jp/dotnet/core/install/linux-ubuntu
 
@@ -98,6 +100,8 @@ sudo usermod -aG docker $USER
 
 exec $SHELL -l
 ```
+
+[install-docker.sh](./install-docker.sh)
 
 #### startup
 `shell:startup` -> [wsl-service-start.bat](./wsl-service-start.bat)
