@@ -59,6 +59,17 @@ $HOME/config/wsl/install-anyenv.sh
 ### dotnet
 https://docs.microsoft.com/ja-jp/dotnet/core/install/linux-ubuntu
 
+```sh
+chmod +x $HOME/config/wsl/install-dotnet6.sh
+$HOME/config/wsl/install-dotnet6.sh
+
+chmod +x $HOME/config/wsl/install-dotnet7-preview.sh
+$HOME/config/wsl/install-dotnet7-preview.sh
+```
+
+- [install-dotnet6.sh](./install-dotnet6.sh)
+- [install-dotnet7-preview.sh](./install-dotnet7-preview.sh)
+
 ## ツール系
 
 ### docker
