@@ -15,6 +15,4 @@ rm packages-microsoft-prod.deb
 sudo apt-get update && \
   sudo apt-get install -y dotnet-sdk-6.0
 
-exec $SHELL -l
-
 dotnet --list-sdks
