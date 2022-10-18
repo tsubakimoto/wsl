@@ -18,6 +18,9 @@ git clone https://github.com/znz/anyenv-update.git $ANYENV_ROOT/plugins/anyenv-u
 sudo apt -y install build-essential
 sudo apt -y install libxml2-dev libssl-dev libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libmcrypt-dev libreadline-dev libtidy-dev libxslt-dev libzip-dev autoconf pkg-config libsqlite3-dev libonig-dev
 
+# Install binaries for pyenv
+sudo apt -y install libffi-devel
+
 # Install *env
 anyenv install nodenv
 anyenv install phpenv
