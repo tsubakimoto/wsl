@@ -8,7 +8,9 @@ wsl --install -d Ubuntu
 
 # Auto setup
 
-https://gist.github.com/tsubakimoto/063ada9dd2ff4e94bff58446bfdb90fd
+```sh
+curl -L https://github.com/tsubakimoto/wsl/raw/main/install.sh | bash
+```
 
 # References
 
