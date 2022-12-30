@@ -9,8 +9,8 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 
 # Sudo
-NEW_USER=yuta
-sudo bash -c 'echo "$NEW_USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$NEW_USER'
+#NEW_USER=yuta
+#sudo bash -c 'echo "$NEW_USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$NEW_USER'
 
 # Network
 #sudo timedatectl set-timezone 'Asia/Tokyo'
