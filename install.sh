@@ -20,11 +20,7 @@ sudo apt-get install -y net-tools
 echo -e "[interop]\nappendWindowsPath=false\n\n[boot]\ncommand=service docker start" | sudo sh -c 'cat - > /etc/wsl.conf'
 
 # Git Credential Manager
-GIT_CREENTIAL_MANAGER_CORE_PATH="/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
-#if [ ! -e "$GIT_CREENTIAL_MANAGER_CORE_PATH" ]; then
-#  GIT_CREENTIAL_MANAGER_CORE_PATH="/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe"
-#fi
-git config --global credential.helper "$GIT_CREENTIAL_MANAGER_CORE_PATH"
+git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
 
 # installers
 WSL_DIR=$HOME/wsl
