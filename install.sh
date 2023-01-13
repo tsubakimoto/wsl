@@ -56,3 +56,7 @@ $WSL_DIR/install-dotnet7.sh
 # azure tools
 chmod +x $WSL_DIR/install-azure-tools.sh
 $WSL_DIR/install-azure-tools.sh
+
+# dev tools
+chmod +x $WSL_DIR/install-dev-tools.sh
+$WSL_DIR/install-dev-tools.sh
