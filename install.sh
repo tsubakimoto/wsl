@@ -17,7 +17,7 @@ sudo apt-get upgrade -y
 sudo apt-get install -y net-tools
 
 # wsl.conf
-echo -e "[interop]\nappendWindowsPath=false\n\n[boot]\ncommand=service docker start" | sudo sh -c 'cat - > /etc/wsl.conf'
+echo -e "[interop]\nappendWindowsPath=false\n\n[boot]\ncommand=service docker start\n\n[user]\ndefault=yuta" | sudo sh -c 'cat - > /etc/wsl.conf'
 
 # Git Credential Manager
 git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
