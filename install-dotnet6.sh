@@ -6,6 +6,6 @@ set -xe
 
 # Install package
 sudo apt-get update && \
-  sudo apt-get install -y dotnet6
+  sudo apt-get install -y dotnet-sdk-6.0
 
 dotnet --list-sdks
