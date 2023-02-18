@@ -47,11 +47,8 @@ chmod +x $WSL_DIR/install-docker.sh
 $WSL_DIR/install-docker.sh
 
 # dotnet
-chmod +x $WSL_DIR/install-dotnet6.sh
+chmod +x $WSL_DIR/install-dotnet.sh
 $WSL_DIR/install-dotnet6.sh
-
-chmod +x $WSL_DIR/install-dotnet7.sh
-$WSL_DIR/install-dotnet7.sh
 
 # azure tools
 chmod +x $WSL_DIR/install-azure-tools.sh
