@@ -33,8 +33,7 @@ curl -L https://github.com/tsubakimoto/wsl/raw/main/install.sh | bash
 
 ### dotnet
 
-- [install-dotnet6.sh](./install-dotnet6.sh)
-- [install-dotnet7-preview.sh](./install-dotnet7-preview.sh)
+- [install-dotnet.sh](./install-dotnet.sh)
 
 https://docs.microsoft.com/ja-jp/dotnet/core/install/linux-ubuntu
 
