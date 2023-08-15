@@ -15,5 +15,7 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 curl -fsSL https://aka.ms/install-azd.sh | sudo bash
 
 # Azure Functions Core Tools
+wget -q https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update -y
 sudo apt-get install -y azure-functions-core-tools-4
