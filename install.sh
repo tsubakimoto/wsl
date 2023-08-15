@@ -9,8 +9,7 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 
 # Sudo
-me=$(whoami)
-echo -e "$me ALL=(ALL) NOPASSWD: ALL" | sudo sh -c "cat - > /etc/sudoers.d/$me"
+echo -e "$USER ALL=(ALL) NOPASSWD: ALL" | sudo sh -c "cat - > /etc/sudoers.d/$USER"
 
 # Network
 #sudo timedatectl set-timezone 'Asia/Tokyo'
