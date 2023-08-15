@@ -9,18 +9,24 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 
 # Sudo
-#NEW_USER=yuta
-#sudo bash -c 'echo "$NEW_USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$NEW_USER'
+echo "Input username"
+read username
+echo -e "$username ALL=(ALL) NOPASSWD: ALL" | sudo sh -c "cat - > /etc/sudoers.d/$username"
 
 # Network
 #sudo timedatectl set-timezone 'Asia/Tokyo'
 sudo apt-get install -y net-tools
 
 # wsl.conf
-echo -e "[interop]\nappendWindowsPath=false\n\n[boot]\ncommand=service docker start\n\n[user]\ndefault=yuta" | sudo sh -c 'cat - > /etc/wsl.conf'
+echo -e "[interop]\nappendWindowsPath=false\n\n[boot]\ncommand=service docker start\n\n[user]\ndefault=yuta" | sudo sh -c "cat - > /etc/wsl.conf"
 
 # Git Credential Manager
-git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
+# http://microsoft.github.io/Git-Credential-Manager-for-Windows/Docs/CredentialManager.html
+GIT_CREENTIAL_MANAGER_CORE_PATH="/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
+#if [ ! -e "$GIT_CREENTIAL_MANAGER_CORE_PATH" ]; then
+#  GIT_CREENTIAL_MANAGER_CORE_PATH="/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe"
+#fi
+git config --global credential.helper "$GIT_CREENTIAL_MANAGER_CORE_PATH"
 
 # installers
 WSL_DIR=$HOME/wsl
