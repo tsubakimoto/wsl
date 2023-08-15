@@ -1,5 +1,5 @@
 #!/bin/bash
-set -xe
+set -x
 
 sudo apt-get update
 

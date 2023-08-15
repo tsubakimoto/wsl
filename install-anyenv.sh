@@ -1,5 +1,5 @@
 #!/bin/bash
-set -xe
+set -x
 
 # Install anyenv
 git clone https://github.com/anyenv/anyenv $HOME/.anyenv
