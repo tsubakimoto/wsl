@@ -16,7 +16,7 @@ echo -e "$USER ALL=(ALL) NOPASSWD: ALL" | sudo sh -c "cat - > /etc/sudoers.d/$US
 sudo apt-get install -y net-tools
 
 # wsl.conf
-echo -e "[interop]\nappendWindowsPath=false\n\n[boot]\ncommand=service docker start\n\n[user]\ndefault=yuta" | sudo sh -c "cat - > /etc/wsl.conf"
+echo -e "[interop]\nappendWindowsPath=true\n\n[boot]\ncommand=service docker start\n\n[user]\ndefault=yuta" | sudo sh -c "cat - > /etc/wsl.conf"
 
 # Git Credential Manager
 # http://microsoft.github.io/Git-Credential-Manager-for-Windows/Docs/CredentialManager.html
