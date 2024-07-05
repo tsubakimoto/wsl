@@ -3,13 +3,13 @@
 - https://learn.microsoft.com/ja-jp/windows/wsl/install
 
 ```powershell
-wsl --install -d Ubuntu
+wsl --install -d Ubuntu-22.04
 ```
 
 # Auto setup
 
 ```sh
-curl -L https://github.com/tsubakimoto/wsl/raw/main/install.sh | bash
+curl -L https://raw.githubusercontent.com/tsubakimoto/wsl/main/install.sh | bash
 ```
 
 # References
