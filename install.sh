@@ -46,10 +46,6 @@ cd $DOTFILES_DIR
 chmod +x $WSL_DIR/install-anyenv.sh
 $WSL_DIR/install-anyenv.sh
 
-# docker
-chmod +x $WSL_DIR/install-docker.sh
-$WSL_DIR/install-docker.sh
-
 # dotnet
 chmod +x $WSL_DIR/install-dotnet.sh
 $WSL_DIR/install-dotnet.sh
@@ -61,3 +57,7 @@ $WSL_DIR/install-azure-tools.sh
 # dev tools
 chmod +x $WSL_DIR/install-dev-tools.sh
 $WSL_DIR/install-dev-tools.sh
+
+# docker
+chmod +x $WSL_DIR/install-docker.sh
+$WSL_DIR/install-docker.sh
