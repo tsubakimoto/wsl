@@ -3,7 +3,7 @@
 - https://learn.microsoft.com/ja-jp/windows/wsl/install
 
 ```powershell
-wsl --install -d Ubuntu
+wsl --install -d Ubuntu-22.04
 ```
 
 # Auto setup
