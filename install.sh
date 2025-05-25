@@ -59,5 +59,5 @@ chmod +x $WSL_DIR/install-dev-tools.sh
 $WSL_DIR/install-dev-tools.sh
 
 # docker
-chmod +x $WSL_DIR/install-docker.sh
-$WSL_DIR/install-docker.sh
+#chmod +x $WSL_DIR/install-docker.sh
+#$WSL_DIR/install-docker.sh
