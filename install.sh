@@ -20,7 +20,7 @@ echo -e "[interop]\nappendWindowsPath=true\n\n[boot]\ncommand=service docker sta
 
 # Git Credential Manager
 # http://microsoft.github.io/Git-Credential-Manager-for-Windows/Docs/CredentialManager.html
-GIT_CREENTIAL_MANAGER_CORE_PATH="/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager.exe"
+GIT_CREENTIAL_MANAGER_CORE_PATH='/mnt/c/Program Files/Git/mingw64/bin/git-credential-manager.exe'
 #if [ ! -e "$GIT_CREENTIAL_MANAGER_CORE_PATH" ]; then
 #  GIT_CREENTIAL_MANAGER_CORE_PATH="/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe"
 #fi
