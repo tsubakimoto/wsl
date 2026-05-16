@@ -27,25 +27,25 @@
       - zlib1g-dev
     state: present
 
-- name: Install anyenv
+- name: Clone anyenv repository
   ansible.builtin.git:
     repo: https://github.com/anyenv/anyenv.git
-    dest: "{{ wsl_anyenv_root }}"
+    dest: '{{ wsl_anyenv_root }}'
     version: master
     update: true
   become: false
 
 - name: Ensure anyenv plugins directory exists
   ansible.builtin.file:
-    path: "{{ wsl_anyenv_plugins_dir }}"
+    path: '{{ wsl_anyenv_plugins_dir }}'
     state: directory
-    mode: "0755"
+    mode: '0755'
   become: false
 
 - name: Install anyenv install plugin
   ansible.builtin.git:
     repo: https://github.com/anyenv/anyenv-install.git
-    dest: "{{ wsl_anyenv_plugins_dir }}/anyenv-install"
+    dest: '{{ wsl_anyenv_plugins_dir }}/anyenv-install'
     version: master
     update: true
   become: false
@@ -53,40 +53,40 @@
 - name: Install anyenv update plugin
   ansible.builtin.git:
     repo: https://github.com/znz/anyenv-update.git
-    dest: "{{ wsl_anyenv_plugins_dir }}/anyenv-update"
+    dest: '{{ wsl_anyenv_plugins_dir }}/anyenv-update'
     version: master
     update: true
   become: false
 
 - name: Configure anyenv in bashrc
   ansible.builtin.blockinfile:
-    path: "{{ ansible_env.HOME }}/.bashrc"
-    marker: "# {mark} ANSIBLE anyenv"
+    path: '{{ ansible_env.HOME }}/.bashrc'
+    marker: '# {mark} ANSIBLE anyenv'
     block: |
       export PATH="{{ wsl_anyenv_root }}/bin:$PATH"
       eval "$({{ wsl_anyenv_root }}/bin/anyenv init -)"
     create: true
-    mode: "0644"
+    mode: '0644'
   become: false
 
 - name: Install anyenv managed environments
   ansible.builtin.command:
     argv:
-      - "{{ wsl_anyenv_root }}/bin/anyenv"
+      - '{{ wsl_anyenv_root }}/bin/anyenv'
       - install
-      - "{{ item }}"
+      - '{{ item }}'
   args:
-    creates: "{{ wsl_anyenv_root }}/envs/{{ item }}"
+    creates: '{{ wsl_anyenv_root }}/envs/{{ item }}'
   environment:
-    ANYENV_ROOT: "{{ wsl_anyenv_root }}"
-    PATH: "{{ wsl_anyenv_root }}/bin:{{ wsl_anyenv_root }}/shims:{{ ansible_env.PATH }}"
-  loop: "{{ wsl_anyenv_envs }}"
+    ANYENV_ROOT: '{{ wsl_anyenv_root }}'
+    PATH: '{{ wsl_anyenv_root }}/bin:{{ wsl_anyenv_root }}/shims:{{ ansible_env.PATH }}'
+  loop: '{{ wsl_anyenv_envs }}'
   become: false
 
 - name: Install nodenv package rehash plugin
   ansible.builtin.git:
     repo: https://github.com/nodenv/nodenv-package-rehash.git
-    dest: "{{ wsl_anyenv_root }}/envs/nodenv/plugins/nodenv-package-rehash"
+    dest: '{{ wsl_anyenv_root }}/envs/nodenv/plugins/nodenv-package-rehash'
     version: master
     update: true
   become: false
@@ -100,8 +100,8 @@
   args:
     executable: /bin/bash
   environment:
-    ANYENV_ROOT: "{{ wsl_anyenv_root }}"
-    PATH: "{{ wsl_anyenv_root }}/bin:{{ wsl_anyenv_root }}/shims:{{ wsl_anyenv_root }}/envs/nodenv/bin:{{ wsl_anyenv_root }}/envs/nodenv/shims:{{ ansible_env.PATH }}"
+    ANYENV_ROOT: '{{ wsl_anyenv_root }}'
+    PATH: '{{ wsl_anyenv_root }}/bin:{{ wsl_anyenv_root }}/shims:{{ wsl_anyenv_root }}/envs/nodenv/bin:{{ wsl_anyenv_root }}/envs/nodenv/shims:{{ ansible_env.PATH }}'
   changed_when: false
   become: false
   when: "'nodenv' in wsl_anyenv_envs"

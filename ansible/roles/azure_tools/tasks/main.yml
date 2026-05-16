@@ -1,17 +1,37 @@
 ---
-- name: Install Azure CLI via official installer
-  ansible.builtin.shell: curl -sL https://aka.ms/InstallAzureCLIDeb | bash
-  args:
-    creates: /usr/bin/az
-    executable: /bin/bash
+- name: Download Azure CLI installer script
+  ansible.builtin.get_url:
+    url: https://aka.ms/InstallAzureCLIDeb
+    dest: /tmp/install-azure-cli.sh
+    mode: '0755'
 
-- name: Install Azure Developer CLI via official installer
-  ansible.builtin.shell: curl -fsSL https://aka.ms/install-azd.sh | bash
-  args:
+- name: Install Azure CLI
+  ansible.builtin.command:
+    cmd: /tmp/install-azure-cli.sh
+    creates: /usr/bin/az
+
+- name: Clean up Azure CLI installer
+  ansible.builtin.file:
+    path: /tmp/install-azure-cli.sh
+    state: absent
+
+- name: Download Azure Developer CLI installer script
+  ansible.builtin.get_url:
+    url: https://aka.ms/install-azd.sh
+    dest: /tmp/install-azd.sh
+    mode: '0755'
+
+- name: Install Azure Developer CLI
+  ansible.builtin.command:
+    cmd: /tmp/install-azd.sh
     creates: /usr/local/bin/azd
-    executable: /bin/bash
   environment:
     AZD_INSTALL_DIR: /usr/local/bin
+
+- name: Clean up Azure Developer CLI installer
+  ansible.builtin.file:
+    path: /tmp/install-azd.sh
+    state: absent
 
 - name: Install Azure Functions Core Tools
   ansible.builtin.apt:

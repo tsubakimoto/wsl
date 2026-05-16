@@ -1,28 +1,29 @@
 ---
-wsl_ubuntu_release: "26.04"
-wsl_apt_architecture: >-
+wsl_ubuntu_release: '26.04'
+wsl_ubuntu_versions: ['24.04', '26.04']
+wsl_apt_architecture: >
   {{ 'amd64' if ansible_architecture in ['x86_64', 'amd64'] else
      'arm64' if ansible_architecture in ['aarch64', 'arm64'] else
      ansible_architecture }}
 wsl_configure_passwordless_sudo: true
 wsl_append_windows_path: true
-wsl_default_user: "{{ ansible_user_id }}"
+wsl_default_user: '{{ ansible_user_id }}'
 wsl_boot_command: "{{ 'service docker start' if wsl_install_docker | bool else '' }}"
-wsl_git_credential_helper: "/mnt/c/Program Files/Git/mingw64/bin/git-credential-manager.exe"
+wsl_git_credential_helper: '/mnt/c/Program Files/Git/mingw64/bin/git-credential-manager.exe'
 
-wsl_dotfiles_repo: ""
-wsl_dotfiles_dest: "{{ ansible_env.HOME }}/dotfiles"
+wsl_dotfiles_repo: ''
+wsl_dotfiles_dest: '{{ ansible_env.HOME }}/dotfiles'
 wsl_run_dotfiles_install: false
-wsl_dotfiles_install_marker: "{{ ansible_env.HOME }}/.local/state/wsl-dotfiles-installed"
+wsl_dotfiles_install_marker: '{{ ansible_env.HOME }}/.local/state/wsl-dotfiles-installed'
 
-wsl_anyenv_root: "{{ ansible_env.HOME }}/.anyenv"
-wsl_anyenv_plugins_dir: "{{ wsl_anyenv_root }}/plugins"
+wsl_anyenv_root: '{{ ansible_env.HOME }}/.anyenv'
+wsl_anyenv_plugins_dir: '{{ wsl_anyenv_root }}/plugins'
 wsl_anyenv_envs:
   - nodenv
   - phpenv
   - pyenv
 
 wsl_dotnet_sdk_packages:
-  - dotnet-sdk-8.0
+  - dotnet-sdk-10.0
 
 wsl_install_docker: false

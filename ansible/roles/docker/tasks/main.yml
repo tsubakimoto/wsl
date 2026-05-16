@@ -10,13 +10,13 @@
   ansible.builtin.file:
     path: /etc/apt/keyrings
     state: directory
-    mode: "0755"
+    mode: '0755'
 
-- name: Download Docker repository key
+- name: Download Docker repository GPG key
   ansible.builtin.get_url:
     url: https://download.docker.com/linux/ubuntu/gpg
     dest: /etc/apt/keyrings/docker.asc
-    mode: "0644"
+    mode: '0644'
 
 - name: Add Docker repository
   ansible.builtin.apt_repository:
@@ -36,18 +36,13 @@
 
 - name: Add current user to docker group
   ansible.builtin.user:
-    name: "{{ ansible_user_id }}"
+    name: '{{ ansible_user_id }}'
     groups: docker
     append: true
 
-- name: Start Docker service with service manager
-  ansible.builtin.service:
+- name: Enable Docker service
+  ansible.builtin.systemd:
     name: docker
-    state: started
     enabled: true
-  when: ansible_service_mgr != 'unknown'
-
-- name: Start Docker service without systemd
-  ansible.builtin.command: service docker start
-  changed_when: false
-  when: ansible_service_mgr == 'unknown'
+    state: started
+  when: ansible_service_mgr == 'systemd'

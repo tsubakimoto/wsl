@@ -23,7 +23,7 @@
     content: "{{ ansible_user_id }} ALL=(ALL) NOPASSWD: ALL\n"
     owner: root
     group: root
-    mode: "0440"
+    mode: '0440'
     validate: "visudo -cf %s"
   when: wsl_configure_passwordless_sudo | bool
 
@@ -33,16 +33,17 @@
     dest: /etc/wsl.conf
     owner: root
     group: root
-    mode: "0644"
+    mode: '0644'
 
 - name: Check Windows Git Credential Manager path
   ansible.builtin.stat:
-    path: "{{ wsl_git_credential_helper }}"
+    path: '{{ wsl_git_credential_helper }}'
   register: git_credential_helper_stat
   become: false
 
-- name: Read current global Git credential helper
-  ansible.builtin.command: git config --global --get credential.helper
+- name: Read current global Git credential helper configuration
+  ansible.builtin.command:
+    cmd: git config --global --get credential.helper
   register: git_credential_helper_current
   changed_when: false
   failed_when: false
@@ -56,7 +57,7 @@
       - config
       - --global
       - credential.helper
-      - "{{ wsl_git_credential_helper }}"
+      - '{{ wsl_git_credential_helper }}'
   become: false
   when:
     - git_credential_helper_stat.stat.exists
@@ -64,35 +65,35 @@
 
 - name: Clone dotfiles repository
   ansible.builtin.git:
-    repo: "{{ wsl_dotfiles_repo }}"
-    dest: "{{ wsl_dotfiles_dest }}"
+    repo: '{{ wsl_dotfiles_repo }}'
+    dest: '{{ wsl_dotfiles_dest }}'
     version: HEAD
     update: true
   become: false
   when: wsl_dotfiles_repo | length > 0
 
-- name: Check dotfiles installer
+- name: Check dotfiles installer script
   ansible.builtin.stat:
-    path: "{{ wsl_dotfiles_dest }}/install.sh"
+    path: '{{ wsl_dotfiles_dest }}/install.sh'
   register: dotfiles_installer
   become: false
   when: wsl_dotfiles_repo | length > 0
 
-- name: Ensure local state directory exists
+- name: Ensure dotfiles local state directory exists
   ansible.builtin.file:
     path: "{{ wsl_dotfiles_install_marker | dirname }}"
     state: directory
-    mode: "0755"
+    mode: '0755'
   become: false
   when:
     - wsl_dotfiles_repo | length > 0
     - wsl_run_dotfiles_install | bool
 
-- name: Run dotfiles installer
-  ansible.builtin.command: ./install.sh
-  args:
-    chdir: "{{ wsl_dotfiles_dest }}"
-    creates: "{{ wsl_dotfiles_install_marker }}"
+- name: Run dotfiles installer script
+  ansible.builtin.command:
+    cmd: ./install.sh
+    chdir: '{{ wsl_dotfiles_dest }}'
+    creates: '{{ wsl_dotfiles_install_marker }}'
   register: dotfiles_install
   become: false
   when:
@@ -100,11 +101,11 @@
     - wsl_run_dotfiles_install | bool
     - dotfiles_installer.stat.exists
 
-- name: Mark dotfiles installation complete
+- name: Mark dotfiles installation as complete
   ansible.builtin.file:
-    path: "{{ wsl_dotfiles_install_marker }}"
+    path: '{{ wsl_dotfiles_install_marker }}'
     state: touch
-    mode: "0644"
+    mode: '0644'
   become: false
   when:
     - wsl_dotfiles_repo | length > 0

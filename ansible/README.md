@@ -1,10 +1,10 @@
-# Ubuntu 26.04 WSL setup with Ansible
+# Ubuntu WSL Setup with Ansible
 
-このディレクトリは、リポジトリ内の `install*.sh` を Ubuntu 26.04 向けの Ansible 構成に置き換えたものです。WSL 上のローカル実行を前提に、初期セットアップをロール単位で再実行可能にしています。
+このディレクトリは、WSL2 上の Ubuntu 24.04/26.04 での開発環境構築を Ansible で自動化します。リポジトリ内の `install*.sh` に代わり、初期セットアップをロール単位で再実行可能にしています。
 
 ## 前提条件
 
-- Windows 側で WSL2 と Ubuntu 26.04 を作成済み
+- Windows 側で WSL2 と Ubuntu 24.04 または 26.04 を作成済み
 - 初回実行時に sudo できるユーザーでログインしている
 - Ubuntu 側で Ansible と Git をインストール済み
 
@@ -27,7 +27,7 @@ ansible-playbook playbooks/workstation.yml -K
 
 - WSL 共通設定: `sudoers`, `/etc/wsl.conf`, Windows Git Credential Manager 連携
 - anyenv: `nodenv`, `phpenv`, `pyenv`
-- .NET SDK 8
+- .NET SDK 10（Ubuntu 24.04/26.04 両対応）
 - Azure CLI / Azure Developer CLI / Azure Functions Core Tools 4
 - 開発ツール: MySQL client, GitHub CLI
 
@@ -39,6 +39,13 @@ Docker は旧 `install.sh` と同様に **既定では無効** です。
 
 ```sh
 ansible-playbook playbooks/workstation.yml -K -e wsl_install_docker=true
+```
+
+### 複数の .NET SDK バージョンをインストール
+
+```sh
+ansible-playbook playbooks/workstation.yml -K \
+  -e wsl_dotnet_sdk_packages='["dotnet-sdk-10.0","dotnet-sdk-9.0"]'
 ```
 
 ### dotfiles も取得してインストーラーを流す
@@ -60,9 +67,10 @@ ansible-playbook playbooks/workstation.yml -K --tags docker -e wsl_install_docke
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
+| `wsl_ubuntu_release` | `26.04` | Ubuntu リリースバージョン（24.04/26.04 対応） |
 | `wsl_default_user` | `{{ ansible_user_id }}` | `/etc/wsl.conf` に書き込む既定ユーザー |
 | `wsl_install_docker` | `false` | Docker ロールを有効化する |
-| `wsl_git_credential_helper` | `/mnt/c/Program Files/Git/mingw64/bin/git-credential-manager.exe` | Windows 側 Git Credential Manager のパス |
+| `wsl_git_credential_helper` | Windows Git Credential Manager パス | Git 認証情報マネージャーのパス |
 | `wsl_dotfiles_repo` | `""` | dotfiles を自動取得する場合の Git URL |
 | `wsl_run_dotfiles_install` | `false` | dotfiles 側 `install.sh` を実行するか |
 

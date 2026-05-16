@@ -1,6 +1,6 @@
 ---
 - name: Install .NET SDK packages
   ansible.builtin.apt:
-    name: "{{ wsl_dotnet_sdk_packages }}"
+    name: '{{ wsl_dotnet_sdk_packages }}'
     state: present
     update_cache: true
