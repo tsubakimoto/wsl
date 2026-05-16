@@ -3,14 +3,32 @@
 - https://learn.microsoft.com/ja-jp/windows/wsl/install
 
 ```powershell
-wsl --install -d Ubuntu
+wsl --install -d Ubuntu-26.04
 ```
 
-# Auto setup
+# Ubuntu 26.04 setup
+
+このリポジトリのセットアップは `install*.sh` から Ansible 構成へ移行しました。実行手順は [ansible/README.md](./ansible/README.md) を参照してください。
+
+最短手順:
 
 ```sh
-curl -L https://raw.githubusercontent.com/tsubakimoto/wsl/main/install.sh | bash
+sudo apt update
+sudo apt install -y ansible git
+git clone https://github.com/tsubakimoto/wsl.git ~/wsl
+cd ~/wsl/ansible
+ansible-playbook playbooks/workstation.yml -K
 ```
+
+Docker もまとめて入れる場合:
+
+```sh
+ansible-playbook playbooks/workstation.yml -K -e wsl_install_docker=true
+```
+
+# Legacy shell scripts
+
+旧 `install*.sh` は参照用として残しています。Ubuntu 26.04 では Ansible 構成の利用を前提にしてください。
 
 # References
 

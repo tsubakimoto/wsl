@@ -1,0 +1,20 @@
+---
+- name: Install Azure CLI via official installer
+  ansible.builtin.shell: curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+  args:
+    creates: /usr/bin/az
+    executable: /bin/bash
+
+- name: Install Azure Developer CLI via official installer
+  ansible.builtin.shell: curl -fsSL https://aka.ms/install-azd.sh | bash
+  args:
+    creates: /usr/local/bin/azd
+    executable: /bin/bash
+  environment:
+    AZD_INSTALL_DIR: /usr/local/bin
+
+- name: Install Azure Functions Core Tools
+  ansible.builtin.apt:
+    name: azure-functions-core-tools-4
+    state: present
+    update_cache: true

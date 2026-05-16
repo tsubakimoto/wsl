@@ -1,0 +1,113 @@
+---
+- name: Update apt cache and upgrade packages
+  ansible.builtin.apt:
+    update_cache: true
+    upgrade: dist
+    cache_valid_time: 86400
+
+- name: Install common packages
+  ansible.builtin.apt:
+    name:
+      - ca-certificates
+      - curl
+      - git
+      - gnupg
+      - lsb-release
+      - net-tools
+      - wget
+    state: present
+
+- name: Configure passwordless sudo for current user
+  ansible.builtin.copy:
+    dest: "/etc/sudoers.d/{{ ansible_user_id }}"
+    content: "{{ ansible_user_id }} ALL=(ALL) NOPASSWD: ALL\n"
+    owner: root
+    group: root
+    mode: "0440"
+    validate: "visudo -cf %s"
+  when: wsl_configure_passwordless_sudo | bool
+
+- name: Configure /etc/wsl.conf
+  ansible.builtin.template:
+    src: wsl.conf.j2
+    dest: /etc/wsl.conf
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Check Windows Git Credential Manager path
+  ansible.builtin.stat:
+    path: "{{ wsl_git_credential_helper }}"
+  register: git_credential_helper_stat
+  become: false
+
+- name: Read current global Git credential helper
+  ansible.builtin.command: git config --global --get credential.helper
+  register: git_credential_helper_current
+  changed_when: false
+  failed_when: false
+  become: false
+  when: git_credential_helper_stat.stat.exists
+
+- name: Configure global Git credential helper
+  ansible.builtin.command:
+    argv:
+      - git
+      - config
+      - --global
+      - credential.helper
+      - "{{ wsl_git_credential_helper }}"
+  become: false
+  when:
+    - git_credential_helper_stat.stat.exists
+    - git_credential_helper_current.stdout != wsl_git_credential_helper
+
+- name: Clone dotfiles repository
+  ansible.builtin.git:
+    repo: "{{ wsl_dotfiles_repo }}"
+    dest: "{{ wsl_dotfiles_dest }}"
+    version: HEAD
+    update: true
+  become: false
+  when: wsl_dotfiles_repo | length > 0
+
+- name: Check dotfiles installer
+  ansible.builtin.stat:
+    path: "{{ wsl_dotfiles_dest }}/install.sh"
+  register: dotfiles_installer
+  become: false
+  when: wsl_dotfiles_repo | length > 0
+
+- name: Ensure local state directory exists
+  ansible.builtin.file:
+    path: "{{ wsl_dotfiles_install_marker | dirname }}"
+    state: directory
+    mode: "0755"
+  become: false
+  when:
+    - wsl_dotfiles_repo | length > 0
+    - wsl_run_dotfiles_install | bool
+
+- name: Run dotfiles installer
+  ansible.builtin.command: ./install.sh
+  args:
+    chdir: "{{ wsl_dotfiles_dest }}"
+    creates: "{{ wsl_dotfiles_install_marker }}"
+  register: dotfiles_install
+  become: false
+  when:
+    - wsl_dotfiles_repo | length > 0
+    - wsl_run_dotfiles_install | bool
+    - dotfiles_installer.stat.exists
+
+- name: Mark dotfiles installation complete
+  ansible.builtin.file:
+    path: "{{ wsl_dotfiles_install_marker }}"
+    state: touch
+    mode: "0644"
+  become: false
+  when:
+    - wsl_dotfiles_repo | length > 0
+    - wsl_run_dotfiles_install | bool
+    - dotfiles_installer.stat.exists
+    - dotfiles_install is changed

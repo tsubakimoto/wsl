@@ -1,0 +1,22 @@
+---
+- name: Check Microsoft packages repository
+  ansible.builtin.stat:
+    path: /etc/apt/sources.list.d/microsoft-prod.list
+  register: microsoft_packages_repo
+
+- name: Download Microsoft packages repository bootstrap
+  ansible.builtin.get_url:
+    url: "https://packages.microsoft.com/config/ubuntu/{{ wsl_ubuntu_release }}/packages-microsoft-prod.deb"
+    dest: /tmp/packages-microsoft-prod.deb
+    mode: "0644"
+  when: not microsoft_packages_repo.stat.exists
+
+- name: Install Microsoft packages repository
+  ansible.builtin.apt:
+    deb: /tmp/packages-microsoft-prod.deb
+  when: not microsoft_packages_repo.stat.exists
+
+- name: Remove repository bootstrap package
+  ansible.builtin.file:
+    path: /tmp/packages-microsoft-prod.deb
+    state: absent

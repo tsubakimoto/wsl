@@ -1,0 +1,29 @@
+---
+- name: Install MySQL client
+  ansible.builtin.apt:
+    name: default-mysql-client
+    state: present
+
+- name: Ensure GitHub CLI keyring directory exists
+  ansible.builtin.file:
+    path: /usr/share/keyrings
+    state: directory
+    mode: "0755"
+
+- name: Download GitHub CLI archive keyring
+  ansible.builtin.get_url:
+    url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
+    dest: /usr/share/keyrings/githubcli-archive-keyring.gpg
+    mode: "0644"
+
+- name: Add GitHub CLI repository
+  ansible.builtin.apt_repository:
+    repo: "deb [arch={{ wsl_apt_architecture }} signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main"
+    filename: github-cli
+    state: present
+    update_cache: true
+
+- name: Install GitHub CLI
+  ansible.builtin.apt:
+    name: gh
+    state: present

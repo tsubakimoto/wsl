@@ -1,0 +1,10 @@
+[interop]
+appendWindowsPath={{ 'true' if wsl_append_windows_path else 'false' }}
+
+{% if wsl_boot_command | length > 0 %}
+[boot]
+command={{ wsl_boot_command }}
+
+{% endif %}
+[user]
+default={{ wsl_default_user }}
