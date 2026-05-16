@@ -3,12 +3,14 @@
   ansible.builtin.apt:
     name: default-mysql-client
     state: present
+  become: true
 
 - name: Ensure GitHub CLI keyring directory exists
   ansible.builtin.file:
     path: /usr/share/keyrings
     state: directory
     mode: '0755'
+  become: true
 
 - name: Download GitHub CLI archive keyring
   ansible.builtin.get_url:
@@ -22,8 +24,10 @@
     filename: github-cli
     state: present
     update_cache: true
+  become: true
 
 - name: Install GitHub CLI
   ansible.builtin.apt:
     name: gh
     state: present
+  become: true

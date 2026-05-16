@@ -9,11 +9,13 @@
   ansible.builtin.command:
     cmd: /tmp/install-azure-cli.sh
     creates: /usr/bin/az
+  become: true
 
 - name: Clean up Azure CLI installer
   ansible.builtin.file:
     path: /tmp/install-azure-cli.sh
     state: absent
+  become: true
 
 - name: Download Azure Developer CLI installer script
   ansible.builtin.get_url:
@@ -25,6 +27,7 @@
   ansible.builtin.command:
     cmd: /tmp/install-azd.sh
     creates: /usr/local/bin/azd
+  become: true
   environment:
     AZD_INSTALL_DIR: /usr/local/bin
 
@@ -32,9 +35,11 @@
   ansible.builtin.file:
     path: /tmp/install-azd.sh
     state: absent
+  become: true
 
 - name: Install Azure Functions Core Tools
   ansible.builtin.apt:
     name: azure-functions-core-tools-4
     state: present
     update_cache: true
+  become: true

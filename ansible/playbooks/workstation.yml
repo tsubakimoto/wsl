@@ -2,7 +2,6 @@
 - name: Provision Ubuntu WSL workstation
   hosts: localhost
   gather_facts: true
-  become: true
   roles:
     - role: common
       tags:

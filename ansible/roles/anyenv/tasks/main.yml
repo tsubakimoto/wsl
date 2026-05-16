@@ -26,6 +26,7 @@
       - tk-dev
       - zlib1g-dev
     state: present
+  become: true
 
 - name: Clone anyenv repository
   ansible.builtin.git:

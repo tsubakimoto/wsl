@@ -5,12 +5,14 @@
       - ca-certificates
       - curl
     state: present
+  become: true
 
 - name: Ensure Docker keyring directory exists
   ansible.builtin.file:
     path: /etc/apt/keyrings
     state: directory
     mode: '0755'
+  become: true
 
 - name: Download Docker repository GPG key
   ansible.builtin.get_url:
@@ -24,6 +26,7 @@
     filename: docker
     state: present
     update_cache: true
+  become: true
 
 - name: Install Docker packages
   ansible.builtin.apt:
@@ -33,16 +36,19 @@
       - docker-ce-cli
       - docker-compose-plugin
     state: present
+  become: true
 
 - name: Add current user to docker group
   ansible.builtin.user:
     name: '{{ ansible_user_id }}'
     groups: docker
     append: true
+  become: true
 
 - name: Enable Docker service
   ansible.builtin.systemd:
     name: docker
     enabled: true
     state: started
+  become: true
   when: ansible_service_mgr == 'systemd'

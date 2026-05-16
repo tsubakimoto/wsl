@@ -14,9 +14,11 @@
 - name: Install Microsoft packages repository
   ansible.builtin.apt:
     deb: /tmp/packages-microsoft-prod.deb
+  become: true
   when: not microsoft_packages_repo.stat.exists
 
 - name: Clean up repository bootstrap package
   ansible.builtin.file:
     path: /tmp/packages-microsoft-prod.deb
     state: absent
+  become: true

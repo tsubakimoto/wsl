@@ -4,3 +4,4 @@
     name: '{{ wsl_dotnet_sdk_packages }}'
     state: present
     update_cache: true
+  become: true

@@ -4,6 +4,7 @@
     update_cache: true
     upgrade: dist
     cache_valid_time: 86400
+  become: true
 
 - name: Install common packages
   ansible.builtin.apt:
@@ -16,6 +17,7 @@
       - net-tools
       - wget
     state: present
+  become: true
 
 - name: Configure passwordless sudo for current user
   ansible.builtin.copy:
@@ -25,6 +27,7 @@
     group: root
     mode: '0440'
     validate: "visudo -cf %s"
+  become: true
   when: wsl_configure_passwordless_sudo | bool
 
 - name: Configure /etc/wsl.conf
@@ -34,6 +37,7 @@
     owner: root
     group: root
     mode: '0644'
+  become: true
 
 - name: Check Windows Git Credential Manager path
   ansible.builtin.stat:

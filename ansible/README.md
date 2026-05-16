@@ -15,13 +15,23 @@ sudo apt install -y ansible git
 
 ## 実行手順
 
+初回実行時は **sudo パスワードが必要**です。`-K` オプション（インタラクティブ sudo パスワード入力）を付けてください：
+
 ```sh
 git clone https://github.com/tsubakimoto/wsl.git ~/wsl
 cd ~/wsl/ansible
 ansible-playbook playbooks/workstation.yml -K
 ```
 
-`-K` は sudo パスワード入力用です。`wsl_configure_passwordless_sudo=true` が既定値なので、2 回目以降は不要になる構成です。
+`common` ロール内で `wsl_configure_passwordless_sudo=true` により passwordless sudo が自動設定されるため、**2回目以降は `-K` を省略可能**です：
+
+```sh
+# 2回目以降
+ansible-playbook playbooks/workstation.yml
+
+# 特定のロールだけ再実行
+ansible-playbook playbooks/workstation.yml --tags anyenv,dotnet
+```
 
 ## 既定で入るもの
 
@@ -41,6 +51,8 @@ Docker は旧 `install.sh` と同様に **既定では無効** です。
 ansible-playbook playbooks/workstation.yml -K -e wsl_install_docker=true
 ```
 
+初回実行後は `-K` を省略可能です。
+
 ### 複数の .NET SDK バージョンをインストール
 
 ```sh
@@ -59,8 +71,9 @@ ansible-playbook playbooks/workstation.yml -K \
 ### 一部ロールだけ再実行する
 
 ```sh
-ansible-playbook playbooks/workstation.yml -K --tags anyenv,dotnet
-ansible-playbook playbooks/workstation.yml -K --tags docker -e wsl_install_docker=true
+# 2回目以降は -K を省略可能
+ansible-playbook playbooks/workstation.yml --tags anyenv,dotnet
+ansible-playbook playbooks/workstation.yml --tags docker -e wsl_install_docker=true
 ```
 
 ## 主要変数
