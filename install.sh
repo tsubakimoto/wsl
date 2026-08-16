@@ -25,12 +25,6 @@ GIT_CREDENTIAL_MANAGER_PATH="/mnt/c/Program Files/Git/mingw64/bin/git-credential
 git config --global --unset-all credential.helper 2>/dev/null || true
 git config --global credential.helper '!f() { "'"$GIT_CREDENTIAL_MANAGER_PATH"'" "$@"; }; f'
 
-# installers
-WSL_DIR=$HOME/wsl
-if [ ! -d $WSL_DIR ]; then
-  git clone https://github.com/tsubakimoto/wsl.git $HOME/wsl
-fi
-
 # dotfiles
 DOTFILES_DIR=$HOME/dotfiles
 if [ ! -d $DOTFILES_DIR ]; then
@@ -40,6 +34,12 @@ fi
 chmod +x $DOTFILES_DIR/install.sh
 cd $DOTFILES_DIR
 ./install.sh
+
+# installers
+WSL_DIR=$HOME/wsl
+if [ ! -d $WSL_DIR ]; then
+  git clone https://github.com/tsubakimoto/wsl.git $HOME/wsl
+fi
 
 # anyenv
 chmod +x $WSL_DIR/install-anyenv.sh
