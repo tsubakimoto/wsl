@@ -21,7 +21,9 @@ echo -e "[interop]\nappendWindowsPath=true\n\n[user]\ndefault=yuta" | sudo sh -c
 
 # Git Credential Manager
 #   http://microsoft.github.io/Git-Credential-Manager-for-Windows/Docs/CredentialManager.html
-git config --global credential.helper '/mnt/c/Program Files/Git/mingw64/bin/git-credential-manager.exe'
+GIT_CREDENTIAL_MANAGER_PATH="/mnt/c/Program Files/Git/mingw64/bin/git-credential-manager.exe"
+git config --global --unset-all credential.helper 2>/dev/null || true
+git config --global credential.helper '!f() { "'"$GIT_CREDENTIAL_MANAGER_PATH"'" "$@"; }; f'
 
 # installers
 WSL_DIR=$HOME/wsl
