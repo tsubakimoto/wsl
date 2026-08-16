@@ -63,4 +63,5 @@ $WSL_DIR/install-dev-tools.sh
 #echo -e "\n[boot]\ncommand=service docker start" | sudo sh -c "cat - >> /etc/wsl.conf"
 
 # completed
+exec $SHELL -l
 echo "Completed WSL2 setup."
