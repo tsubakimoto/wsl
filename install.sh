@@ -16,17 +16,16 @@ echo -e "$USER ALL=(ALL) NOPASSWD: ALL" | sudo sh -c "cat - > /etc/sudoers.d/$US
 sudo apt-get install -y net-tools
 
 # wsl.conf
-#   with docker
-# echo -e "[interop]\nappendWindowsPath=true\n\n[boot]\ncommand=service docker start\n\n[user]\ndefault=yuta" | sudo sh -c "cat - > /etc/wsl.conf"
-#   without docker
+#echo -e "[interop]\nappendWindowsPath=true\n\n[boot]\ncommand=service docker start\n\n[user]\ndefault=yuta" | sudo sh -c "cat - > /etc/wsl.conf"
 echo -e "[interop]\nappendWindowsPath=true\n\n[user]\ndefault=yuta" | sudo sh -c "cat - > /etc/wsl.conf"
 
 # Git Credential Manager
-# http://microsoft.github.io/Git-Credential-Manager-for-Windows/Docs/CredentialManager.html
+#   http://microsoft.github.io/Git-Credential-Manager-for-Windows/Docs/CredentialManager.html
 GIT_CREENTIAL_MANAGER_CORE_PATH='/mnt/c/Program Files/Git/mingw64/bin/git-credential-manager.exe'
-#if [ ! -e "$GIT_CREENTIAL_MANAGER_CORE_PATH" ]; then
-#  GIT_CREENTIAL_MANAGER_CORE_PATH="/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe"
-#fi
+if [ ! -f "$GIT_CREENTIAL_MANAGER_CORE_PATH" ]; then
+  echo "Git Credential Manager is not installed." >&2
+  exit 1
+fi
 git config --global credential.helper "$GIT_CREENTIAL_MANAGER_CORE_PATH"
 
 # installers
@@ -64,3 +63,4 @@ $WSL_DIR/install-dev-tools.sh
 # docker
 #chmod +x $WSL_DIR/install-docker.sh
 #$WSL_DIR/install-docker.sh
+#echo -e "\n[boot]\ncommand=service docker start" | sudo sh -c "cat - >> /etc/wsl.conf"
