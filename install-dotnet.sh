@@ -8,7 +8,7 @@ set -xe
 
 # Install package
 sudo apt-get update && \
-  sudo apt-get install -y dotnet-sdk-8.0
+  sudo apt-get install -y dotnet-sdk-10.0
 
 # .NET 9
 ## https://github.com/dotnet/core/blob/main/release-notes/9.0/install-linux.md
