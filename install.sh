@@ -26,7 +26,7 @@ if [ ! -f "$GIT_CREENTIAL_MANAGER_CORE_PATH" ]; then
   echo "Git Credential Manager is not installed." >&2
   exit 1
 fi
-git config --global credential.helper "$GIT_CREENTIAL_MANAGER_CORE_PATH"
+git config --global credential.helper "\"$GIT_CREENTIAL_MANAGER_CORE_PATH\""
 
 # installers
 WSL_DIR=$HOME/wsl
