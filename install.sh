@@ -44,22 +44,18 @@ fi
 # anyenv
 chmod +x $WSL_DIR/install-anyenv.sh
 $WSL_DIR/install-anyenv.sh
-exec $SHELL -l
 
 # dotnet
 chmod +x $WSL_DIR/install-dotnet.sh
 $WSL_DIR/install-dotnet.sh
-exec $SHELL -l
 
 # azure tools
 chmod +x $WSL_DIR/install-azure-tools.sh
 $WSL_DIR/install-azure-tools.sh
-exec $SHELL -l
 
 # dev tools
 chmod +x $WSL_DIR/install-dev-tools.sh
 $WSL_DIR/install-dev-tools.sh
-exec $SHELL -l
 
 # docker
 #chmod +x $WSL_DIR/install-docker.sh
